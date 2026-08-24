@@ -1,0 +1,28 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.10/schema.json",
+  "files": {
+    "includes": ["**", "!!**/.astro", "!!**/dist", "!!**/node_modules"]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "linter": {
+    "domains": {
+      "astro": "recommended",
+      "react": "recommended"
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          }
+        }
+      }
+    }
+  ]
+}
