@@ -4,8 +4,8 @@ import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import GroupsOutlined from "@mui/icons-material/GroupsOutlined";
 import LocationOnOutlined from "@mui/icons-material/LocationOnOutlined";
-import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
 import NaturePeopleOutlined from "@mui/icons-material/NaturePeopleOutlined";
+import PhoneRounded from "@mui/icons-material/PhoneRounded";
 import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
 import WhatsApp from "@mui/icons-material/WhatsApp";
 import Box from "@mui/material/Box";
@@ -16,8 +16,8 @@ import {
   BodyText,
   CompactCta,
   ContactCard,
-  ContactEmail,
   ContactGrid,
+  ContactPhone,
   ContactSection,
   CtaLink,
   FocusCard,
@@ -545,21 +545,19 @@ export function PartnerPage() {
           </Box>
           <ContactCard>
             <Heading3 component="h3">Let’s start a conversation.</Heading3>
-            <ContactEmail href="mailto:info@bstari.org?subject=Partnership%20enquiry">
-              <MailOutlineRounded aria-hidden="true" />
-              info@bstari.org
-            </ContactEmail>
+            <ContactPhone href="tel:+6282157245665">
+              <PhoneRounded aria-hidden="true" />
+              +62 821-5724-5665
+            </ContactPhone>
             <BodyText component="p">
-              Or reach us on WhatsApp:
+              Prefer messaging?
               <br />
               <TextLink href="https://wa.me/6282157245665">
                 <WhatsApp aria-hidden="true" />
-                +62 821-5724-5665 {arrow}
+                WhatsApp our team {arrow}
               </TextLink>
             </BodyText>
-            <CtaLink href="mailto:info@bstari.org?subject=Partnership%20enquiry">
-              Email our team {arrow}
-            </CtaLink>
+            <CtaLink href="tel:+6282157245665">Call our team {arrow}</CtaLink>
             <SmallText component="p">
               To help us begin, include your organization, area of interest, and
               proposed timeframe.

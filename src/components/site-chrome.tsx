@@ -1,5 +1,4 @@
 import CloseRounded from "@mui/icons-material/CloseRounded";
-import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
 import MenuRounded from "@mui/icons-material/MenuRounded";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
@@ -241,13 +240,6 @@ export function SiteFooter() {
                 {label}
               </a>
             ))}
-            <a href="mailto:info@bstari.org">
-              <MailOutlineRounded
-                aria-hidden="true"
-                sx={{ fontSize: "1rem", verticalAlign: "middle", mr: 0.75 }}
-              />
-              info@bstari.org
-            </a>
           </nav>
         </FooterTop>
         <FooterBottom>

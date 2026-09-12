@@ -498,7 +498,7 @@ export const ContactCard = styled(Box)<SemanticProps>(({ theme }) => ({
   },
 }));
 
-export const ContactEmail = styled("a")({
+export const ContactPhone = styled("a")({
   alignItems: "center",
   borderBottom: "1px solid #a3b5ad",
   display: "inline-flex",

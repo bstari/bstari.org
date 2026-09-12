@@ -79,8 +79,9 @@ assert.equal(
   "Hero photo replaces artwork when present",
 );
 const partner = await Bun.file("dist/partner/index.html").text();
-assert(partner.includes("mailto:info@bstari.org"), "Email CTA");
+assert(partner.includes("tel:+6282157245665"), "Phone CTA");
 assert(partner.includes("https://wa.me/6282157245665"), "WhatsApp CTA");
+assert(!partner.includes("mailto:info@bstari.org"), "Email CTA hidden");
 console.log(
   "Four pages: headings, links, anchors, images, hero fallback, and contact CTAs passed.",
 );
