@@ -96,6 +96,7 @@ describe("published site", () => {
     expect(home.includes('src="/photos/hero-belayan.jpg"')).toBe(
       existsSync("public/photos/hero-belayan.jpg"),
     );
+    expect(home).toContain('src="/videos/hero-river.mp4"');
     expect(partner).toContain("tel:+6282157245665");
     expect(partner).toContain("https://wa.me/6282157245665");
     expect(partner).not.toContain("mailto:info@bstari.org");

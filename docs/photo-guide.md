@@ -13,6 +13,10 @@ Each source page states that the image is free to use under the Unsplash License
 | `training-agriculture.jpg` | Sustainable agriculture | Jan Hildebrand — [Unsplash photo](https://unsplash.com/photos/farmers-working-in-flooded-rice-paddies-surrounded-by-palm-trees-azdSLacrFMA) |
 | `community-knowledge.jpg` | Group discussion | Sebastian Ciepiela — [Unsplash photo](https://unsplash.com/photos/group-of-women-sitting-around-a-table-discussing-swhA61y25iE) |
 
+## Temporary hero video
+
+`public/videos/hero-river.mp4` is a 1280 × 720 river loop from [Mikhail Nilov on Pexels](https://www.pexels.com/video/river-flowing-through-the-forest-6981372/), whose page marks it free to use. It is loaded only above 760px when motion is allowed; `hero-belayan.jpg` remains the poster and still-image fallback. Replace this clip with approved BESTARI footage before publication.
+
 To replace the placeholders, place the following JPEG files in `public/photos/`, using the exact lowercase filenames below. Run `bun run build` after adding them (restart the development server for a local preview). The design detects available photos at build time and replaces the decorative river artwork.
 
 | Priority | Filename | Best image for this space | Suggested size |

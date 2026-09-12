@@ -30,6 +30,17 @@ const PhotoImage = styled("img")({
   width: "100%",
 });
 
+const VideoOverlay = styled("video")({
+  filter: "saturate(0.82) contrast(1.04) brightness(0.86)",
+  height: "100%",
+  inset: 0,
+  objectFit: "cover",
+  position: "absolute",
+  width: "100%",
+  "@media (max-width: 759px)": { display: "none" },
+  "@media (prefers-reduced-motion: reduce)": { display: "none" },
+});
+
 const RiverArt = styled("div")(({ theme }) => ({
   height: "100%",
   overflow: "hidden",
@@ -60,6 +71,7 @@ interface Props {
   alt: string;
   caption?: string;
   hero?: boolean;
+  video?: string;
 }
 
 export default function FieldPhoto({
@@ -67,8 +79,12 @@ export default function FieldPhoto({
   alt,
   caption,
   hero = false,
+  video,
 }: Props) {
   const available = existsSync(`public/photos/${name}.jpg`);
+  const videoAvailable = Boolean(
+    video && existsSync(`public/videos/${video}.mp4`),
+  );
 
   return (
     <Figure hero={hero}>
@@ -85,6 +101,23 @@ export default function FieldPhoto({
         <RiverArt aria-hidden="true">
           <img src="/river-study.svg" alt="" width="800" height="1000" />
         </RiverArt>
+      )}
+      {videoAvailable && (
+        <VideoOverlay
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={available ? `/photos/${name}.jpg` : undefined}
+          aria-hidden="true"
+        >
+          <source
+            src={`/videos/${video}.mp4`}
+            type="video/mp4"
+            media="(min-width: 760px) and (prefers-reduced-motion: no-preference)"
+          />
+        </VideoOverlay>
       )}
       {caption && <Caption>{caption}</Caption>}
     </Figure>

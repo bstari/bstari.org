@@ -355,9 +355,19 @@ export const StoryCopy = styled(Box)<SemanticProps>({
 
 export const VisionBand = styled("section")(({ theme }) => ({
   backgroundColor: colors.navy,
+  backgroundImage:
+    "linear-gradient(#06284ff0, #06284ff0), url('/river-study.svg')",
+  backgroundPosition: "center, right center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
   color: "#fff",
   paddingBlock: 75,
-  "& > div > p:first-child": { color: colors.gold },
+  '&[data-background="landscape"]': {
+    backgroundImage:
+      "linear-gradient(#06284fe6, #06284fe6), url('/photos/hero-belayan.jpg')",
+    backgroundPosition: "center",
+  },
+  "& > div > p:first-of-type": { color: colors.gold },
   "& h2": { maxWidth: 940 },
   [theme.breakpoints.down("sm")]: {
     paddingBlock: 55,

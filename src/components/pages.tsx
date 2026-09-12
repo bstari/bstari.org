@@ -215,6 +215,7 @@ export function HomePage({ locale = "en" }: PageProps) {
             alt={copy.heroAlt}
             hero
             caption={copy.heroCaption}
+            video="hero-river"
           />
         </HeroGrid>
       </Hero>
@@ -410,7 +411,7 @@ export function AboutPage({ locale = "en" }: PageProps) {
         </StoryCopy>
       </StoryGrid>
 
-      <VisionBand>
+      <VisionBand data-background="landscape">
         <Box
           sx={{
             width: "min(1240px, calc(100% - 112px))",
