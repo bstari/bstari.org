@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#06284F"/>
+  <g opacity=".32" stroke="#507576" stroke-width="1">
+    <path d="M220 40C1010 140 470 260 820 330S1480 470 1200 730"/>
+    <path d="M260 20C1050 120 510 240 860 310S1520 450 1240 710"/>
+    <path d="M300 0C1090 100 550 220 900 290S1560 430 1280 690"/>
+    <path d="M340 -20C1130 80 590 200 940 270S1600 410 1320 670"/>
+    <path d="M380 -40C1170 60 630 180 980 250S1640 390 1360 650"/>
+  </g>
+  <path d="M270 -20C1060 80 520 200 870 270S1530 410 1250 670" stroke="#D8C8A4" stroke-width="62"/>
+  <path d="M270 -20C1060 80 520 200 870 270S1530 410 1250 670" stroke="#EFE4C9" stroke-width="1"/>
+  <path d="M72 84H310" stroke="#D8C8A4" stroke-width="2"/>
+  <text x="72" y="165" fill="#F7F8F5" font-family="DejaVu Serif, serif" font-size="64" letter-spacing="1">BELAYAN</text>
+  <text x="76" y="205" fill="#D8C8A4" font-family="DejaVu Sans, sans-serif" font-size="19" letter-spacing="6">SEJAHTERA LESTARI</text>
+  <text x="76" y="505" fill="#F7F8F5" font-family="DejaVu Serif, serif" font-size="38">Community-led development</text>
+  <text x="76" y="548" fill="#C5D2DF" font-family="DejaVu Sans, sans-serif" font-size="21" letter-spacing="1">East Kalimantan, Indonesia</text>
+</svg>

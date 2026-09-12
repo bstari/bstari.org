@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
+const image = new URL("/full-name-logo.png", Astro.site);
+const socialImage = new URL("/social-card.png", Astro.site);
+const links = [
+  ["/", "Home"],
+  ["/about/", "Our story"],
+  ["/work/", "Our work"],
+  ["/partner/", "Partner with us"],
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | BESTARI</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Belayan Sejahtera Lestari" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#06284f" />
+    <link rel="canonical" href={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Belayan Sejahtera Lestari" />
+    <meta property="og:title" content={`${title} | BESTARI`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Belayan Sejahtera Lestari — community development in East Kalimantan" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | BESTARI`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Belayan Sejahtera Lestari — community development in East Kalimantan" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Organization',
+      name: 'Belayan Sejahtera Lestari', alternateName: 'BESTARI',
+      description: 'Independent social foundation supporting community-led development in East Kalimantan.',
+      url: Astro.site, logo: image, email: 'info@bstari.org', telephone: '+6282157245665',
+      contactPoint: { '@type': 'ContactPoint', contactType: 'partnership enquiries', email: 'info@bstari.org', telephone: '+6282157245665' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Muai Village', addressRegion: 'Kembang Janggut, Kutai Kartanegara, East Kalimantan', addressCountry: 'ID' },
+    })} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="BESTARI home"><img src="/full-name-logo.png" alt="Belayan Sejahtera Lestari" width="2700" height="1080" /></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          {links.map(([href, label]) => <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined}>{label}</a>)}
+        </nav>
+        <details class="mobile-nav">
+          <summary>Menu <span aria-hidden="true">+</span></summary>
+          <nav aria-label="Mobile navigation">{links.map(([href, label]) => <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined}>{label}</a>)}</nav>
+        </details>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div><a class="footer-name" href="/">BESTARI</a><p>Belayan Sejahtera Lestari<br />Continue the Sustainability</p></div>
+        <p>Rooted in Muai Village.<br />Kembang Janggut, Kutai Kartanegara<br />East Kalimantan, Indonesia</p>
+        <nav aria-label="Footer navigation"><a href="/about/">Our story</a><a href="/work/">Our work</a><a href="/partner/">Partner with us</a><a href="mailto:info@bstari.org">info@bstari.org</a></nav>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Belayan Sejahtera Lestari</span><span>For the generations ahead.</span></div>
+    </footer>
+  </body>
+</html>

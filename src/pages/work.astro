@@ -1,0 +1,52 @@
+---
+import FieldPhoto from "../components/FieldPhoto.astro";
+import Site from "../layouts/Site.astro";
+
+const pillars = [
+  {
+    id: "education",
+    title: "Education & human development",
+    line: "Knowledge creates choices.",
+    description:
+      "Practical, accessible learning that strengthens people’s ability to make decisions, lead, and create new possibilities.",
+    topics:
+      "Community education · Financial literacy · Leadership · Vocational skills",
+    photo: "training-learning",
+  },
+  {
+    id: "livelihoods",
+    title: "Community economy & sustainable livelihoods",
+    line: "Opportunity that grows from within.",
+    description:
+      "Supporting smallholder farmers, women, young people, and local enterprises to build the skills and institutions for economic independence.",
+    topics:
+      "Enterprise development · Financial management · Market access · Institutional capacity",
+    photo: "training-livelihoods",
+  },
+  {
+    id: "environment",
+    title: "Environment, climate & sustainable agriculture",
+    line: "Prosperity depends on a living landscape.",
+    description:
+      "Connecting community wellbeing with responsible production, resilient agriculture, and care for the natural resources on which rural life depends.",
+    topics:
+      "Sustainable agriculture · Climate resilience · Responsible land management",
+    photo: "training-agriculture",
+  },
+  {
+    id: "knowledge",
+    title: "Research, knowledge & local culture",
+    line: "Local experience deserves to be heard.",
+    description:
+      "Documenting community knowledge and connecting it with research, data, technology, and wider networks so local experience can inform broader change.",
+    topics: "Research · Documentation · Knowledge exchange · Local culture",
+    photo: "community-knowledge",
+  },
+];
+---
+<Site title="Sustainable Development in East Kalimantan" description="Explore BESTARI’s work in community education, sustainable livelihoods, climate resilience, agriculture, and local knowledge.">
+  <section class="page-heading container"><p class="section-label">Our work</p><h1>Different starting points.<br />A shared future.</h1><p class="lead">Our four strategic pillars connect learning, livelihoods, the environment, and local knowledge. Each begins with the people who know their communities best.</p><nav class="jump-links" aria-label="Focus areas"><a href="#education">Learning</a><a href="#livelihoods">Livelihoods</a><a href="#environment">Environment</a><a href="#knowledge">Knowledge</a></nav></section>
+  <div class="container work-list">{pillars.map(pillar => <section class="work-item" id={pillar.id}><FieldPhoto name={pillar.photo} alt="" /><div><p class="section-label">{pillar.line}</p><h2>{pillar.title}</h2><p>{pillar.description}</p><details><summary>Explore the focus areas</summary><p>{pillar.topics}</p></details></div></section>)}</div>
+  <section class="container portfolio-note"><p class="section-label">Project portfolio</p><h2>Stories from the field.</h2><p>We are preparing our project documentation for publication. This page currently presents our strategic focus; individual project stories and results will be shared as they are documented.</p></section>
+  <section class="vision-band"><div class="container compact-cta"><h2>See a shared priority?</h2><a class="button button-gold" href="/partner/">Explore a partnership <span aria-hidden="true">↗</span></a></div></section>
+</Site>
