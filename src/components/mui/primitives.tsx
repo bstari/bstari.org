@@ -33,6 +33,14 @@ export const SectionLabel = styled(Typography)<SemanticProps>({
   margin: "0 0 25px",
 });
 
+export const SectionIcon = styled("span")({
+  color: colors.focus,
+  display: "inline-flex",
+  marginRight: 8,
+  verticalAlign: "-0.2em",
+  "& svg": { fontSize: "1rem" },
+});
+
 export const Heading1 = styled(Typography)<SemanticProps>({
   color: "inherit",
   fontFamily: '"Source Serif 4", Georgia, "Times New Roman", serif',
@@ -92,11 +100,11 @@ export const TextLink = styled("a")({
   display: "inline-flex",
   fontSize: "0.9rem",
   fontWeight: 500,
-  gap: 25,
+  gap: 12,
   paddingBlock: 8,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.navy },
-  "& span": { fontSize: "1.15rem" },
+  "& > svg": { fontSize: "1.1rem" },
 });
 
 interface CtaLinkProps {
@@ -122,7 +130,7 @@ export const CtaLink = styled("a", {
   "&:hover": {
     backgroundColor: gold ? "#e9dcbe" : "#153e62",
   },
-  "& span": { fontSize: "1.15rem" },
+  "& > svg": { fontSize: "1.1rem" },
   "@media (prefers-reduced-motion: reduce)": { transition: "none" },
 }));
 
@@ -161,13 +169,7 @@ export const Place = styled(Typography)<SemanticProps>(({ theme }) => ({
   gap: 10,
   lineHeight: 1.5,
   margin: "0 0 36px",
-  "& > span": {
-    backgroundColor: colors.gold,
-    borderRadius: "50%",
-    display: "block",
-    height: 6,
-    width: 6,
-  },
+  "& > svg": { color: colors.gold, fontSize: "1rem" },
   [theme.breakpoints.down("sm")]: { marginBottom: 25 },
 }));
 
@@ -265,17 +267,27 @@ export const FocusGrid = styled(Box)<SemanticProps>(({ theme }) => ({
   "@media (max-width: 400px)": { gridTemplateColumns: "1fr" },
 }));
 
+export const FocusIcon = styled("span")({
+  color: colors.focus,
+  display: "inline-flex",
+  marginBottom: 18,
+  "& svg": { fontSize: "1.35rem" },
+});
+
 export const FocusCard = styled("a")(({ theme }) => ({
   borderTop: "1px solid #c4cecb",
   padding: "32px 32px 32px 0",
   position: "relative",
   "& h3": { fontSize: "1.65rem" },
   "& p": { fontSize: "0.85rem", margin: "14px 0 0" },
-  "& > span": {
+  "& .card-arrow": {
+    color: colors.navy,
+    display: "inline-flex",
     fontSize: "1.4rem",
     position: "absolute",
     right: 0,
     top: 36,
+    "& svg": { fontSize: "1.2rem" },
   },
   "&:hover h3": {
     textDecoration: "underline",
@@ -286,7 +298,7 @@ export const FocusCard = styled("a")(({ theme }) => ({
     paddingRight: 20,
     "& h3": { fontSize: "1.4rem" },
     "& p": { fontSize: "0.8rem" },
-    "& > span": { fontSize: "1.1rem" },
+    "& .card-arrow svg": { fontSize: "1.1rem" },
   },
 }));
 
@@ -360,12 +372,22 @@ export const Principles = styled(Box)<SemanticProps>(({ theme }) => ({
   },
   "& details:last-of-type": { borderBottom: `1px solid ${colors.line}` },
   "& summary": {
+    alignItems: "center",
     cursor: "pointer",
+    display: "flex",
+    justifyContent: "space-between",
     fontSize: "1.05rem",
     fontWeight: 500,
     lineHeight: 1.5,
     paddingRight: 15,
   },
+  "& summary svg": {
+    color: colors.navy,
+    flex: "0 0 auto",
+    fontSize: "1.2rem",
+    transition: "transform 0.2s",
+  },
+  "& details[open] summary svg": { transform: "rotate(180deg)" },
   "& details p": { fontSize: "0.95rem", margin: "20px 0 0" },
   [theme.breakpoints.down("sm")]: {},
 }));
@@ -397,7 +419,19 @@ export const WorkItem = styled("section")(({ theme }) => ({
   "& p": { fontSize: "0.94rem" },
   "& > div > p:first-child": { fontSize: "0.8rem", marginBottom: 18 },
   "& details": { borderTop: `1px solid ${colors.line}`, paddingTop: 20 },
-  "& summary": { fontSize: "0.85rem" },
+  "& summary": {
+    alignItems: "center",
+    display: "flex",
+    fontSize: "0.85rem",
+    justifyContent: "space-between",
+  },
+  "& summary svg": {
+    color: colors.navy,
+    flex: "0 0 auto",
+    fontSize: "1.15rem",
+    transition: "transform 0.2s",
+  },
+  "& details[open] summary svg": { transform: "rotate(180deg)" },
   "&:nth-of-type(even) > figure": { order: 2 },
   [theme.breakpoints.down("md")]: { gap: 40 },
   [theme.breakpoints.down("sm")]: {
@@ -465,12 +499,15 @@ export const ContactCard = styled(Box)<SemanticProps>(({ theme }) => ({
 }));
 
 export const ContactEmail = styled("a")({
+  alignItems: "center",
   borderBottom: "1px solid #a3b5ad",
-  display: "inline-block",
+  display: "inline-flex",
   fontFamily: '"Source Serif 4", Georgia, serif',
   fontSize: "clamp(1.6rem, 3vw, 2.3rem)",
+  gap: 12,
   lineHeight: 1.4,
   marginBlock: 22,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.navy },
+  "& svg": { color: colors.focus, fontSize: "1.35rem" },
 });

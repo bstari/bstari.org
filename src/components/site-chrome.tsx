@@ -1,3 +1,6 @@
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
+import MenuRounded from "@mui/icons-material/MenuRounded";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import { MuiTheme } from "./mui/mui-theme";
@@ -85,19 +88,20 @@ const MobileNav = styled("details")(({ theme }) => ({
     alignItems: "center",
     display: "flex",
     fontSize: "0.85rem",
-    gap: 14,
+    justifyContent: "space-between",
     listStyle: "none",
     minHeight: 44,
     padding: "10px 0",
   },
   "& summary::-webkit-details-marker": { display: "none" },
-  "& summary > span": {
-    display: "block",
-    fontSize: "1.5rem",
-    fontWeight: 400,
-    transition: "transform 0.2s",
+  "& summary > svg": {
+    color: colors.gold,
+    fontSize: "1.35rem",
+    transition: "opacity 0.2s, transform 0.2s",
   },
-  "&[open] summary > span": { transform: "rotate(45deg)" },
+  "& summary > .close-icon": { display: "none" },
+  "&[open] summary > .menu-icon": { display: "none" },
+  "&[open] summary > .close-icon": { display: "block" },
 }));
 
 interface HeaderProps {
@@ -123,7 +127,9 @@ function Navigation({
     return (
       <MobileNav>
         <summary>
-          Menu <span aria-hidden="true">+</span>
+          <span>Menu</span>
+          <MenuRounded className="menu-icon" aria-hidden="true" />
+          <CloseRounded className="close-icon" aria-hidden="true" />
         </summary>
         <MobileLinks aria-label={label}>{links}</MobileLinks>
       </MobileNav>
@@ -235,7 +241,13 @@ export function SiteFooter() {
                 {label}
               </a>
             ))}
-            <a href="mailto:info@bstari.org">info@bstari.org</a>
+            <a href="mailto:info@bstari.org">
+              <MailOutlineRounded
+                aria-hidden="true"
+                sx={{ fontSize: "1rem", verticalAlign: "middle", mr: 0.75 }}
+              />
+              info@bstari.org
+            </a>
           </nav>
         </FooterTop>
         <FooterBottom>

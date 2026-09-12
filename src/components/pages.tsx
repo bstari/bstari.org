@@ -1,3 +1,13 @@
+import AgricultureOutlined from "@mui/icons-material/AgricultureOutlined";
+import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
+import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
+import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
+import GroupsOutlined from "@mui/icons-material/GroupsOutlined";
+import LocationOnOutlined from "@mui/icons-material/LocationOnOutlined";
+import MailOutlineRounded from "@mui/icons-material/MailOutlineRounded";
+import NaturePeopleOutlined from "@mui/icons-material/NaturePeopleOutlined";
+import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
+import WhatsApp from "@mui/icons-material/WhatsApp";
 import Box from "@mui/material/Box";
 import FieldPhoto from "./mui/field-photo";
 import { MuiTheme } from "./mui/mui-theme";
@@ -12,6 +22,7 @@ import {
   CtaLink,
   FocusCard,
   FocusGrid,
+  FocusIcon,
   FocusInner,
   FocusSection,
   Heading1,
@@ -34,6 +45,7 @@ import {
   PrinciplesNote,
   QuietLink,
   SectionHeading,
+  SectionIcon,
   SectionLabel,
   SmallText,
   StoryCopy,
@@ -44,7 +56,8 @@ import {
   WorkList,
 } from "./mui/primitives";
 
-const arrow = <span aria-hidden="true">↗</span>;
+const arrow = <ArrowOutwardRounded aria-hidden="true" />;
+const expand = <ExpandMoreRounded aria-hidden="true" />;
 
 export function HomePage() {
   return (
@@ -53,7 +66,7 @@ export function HomePage() {
         <HeroGrid>
           <HeroCopy>
             <Place component="p">
-              <span aria-hidden="true" />
+              <LocationOnOutlined aria-hidden="true" />
               From Belayan, East Kalimantan
             </Place>
             <HeroHeading component="h1">
@@ -117,40 +130,52 @@ export function HomePage() {
           </SectionHeading>
           <FocusGrid>
             <FocusCard href="/work/#education">
+              <FocusIcon aria-hidden="true">
+                <SchoolOutlined />
+              </FocusIcon>
               <Heading3 component="h3">
                 Education &amp;
                 <br />
                 human development
               </Heading3>
               <p>Practical knowledge. Greater possibilities.</p>
-              {arrow}
+              <span className="card-arrow">{arrow}</span>
             </FocusCard>
             <FocusCard href="/work/#livelihoods">
+              <FocusIcon aria-hidden="true">
+                <GroupsOutlined />
+              </FocusIcon>
               <Heading3 component="h3">
                 Community economy &amp;
                 <br />
                 sustainable livelihoods
               </Heading3>
               <p>Local capacity. Economic independence.</p>
-              {arrow}
+              <span className="card-arrow">{arrow}</span>
             </FocusCard>
             <FocusCard href="/work/#environment">
+              <FocusIcon aria-hidden="true">
+                <AgricultureOutlined />
+              </FocusIcon>
               <Heading3 component="h3">
                 Environment, climate &amp;
                 <br />
                 sustainable agriculture
               </Heading3>
               <p>Resilient land. Resilient communities.</p>
-              {arrow}
+              <span className="card-arrow">{arrow}</span>
             </FocusCard>
             <FocusCard href="/work/#knowledge">
+              <FocusIcon aria-hidden="true">
+                <AutoStoriesOutlined />
+              </FocusIcon>
               <Heading3 component="h3">
                 Research, knowledge &amp;
                 <br />
                 local culture
               </Heading3>
               <p>Local experience. Shared understanding.</p>
-              {arrow}
+              <span className="card-arrow">{arrow}</span>
             </FocusCard>
           </FocusGrid>
         </FocusInner>
@@ -255,7 +280,10 @@ export function AboutPage() {
         </Box>
         <Principles>
           <details open>
-            <summary>Belayan — our roots</summary>
+            <summary>
+              Belayan — our roots
+              {expand}
+            </summary>
             <p>
               A river connecting villages, livelihoods, cultures, and
               generations. Our work begins where our relationships and
@@ -263,14 +291,20 @@ export function AboutPage() {
             </p>
           </details>
           <details>
-            <summary>Sejahtera — shared prosperity</summary>
+            <summary>
+              Sejahtera — shared prosperity
+              {expand}
+            </summary>
             <p>
               Prosperity means knowledge, dignity, security, participation, and
               the ability to shape one’s own future, as well as income.
             </p>
           </details>
           <details>
-            <summary>Lestari — our responsibility</summary>
+            <summary>
+              Lestari — our responsibility
+              {expand}
+            </summary>
             <p>
               Progress must respect ecological limits and leave meaningful
               opportunities for the generations that follow.
@@ -358,11 +392,22 @@ export function WorkPage() {
           <WorkItem id={pillar.id} key={pillar.id}>
             <FieldPhoto name={pillar.photo} alt="" />
             <Box>
-              <SectionLabel component="p">{pillar.line}</SectionLabel>
+              <SectionLabel component="p">
+                <SectionIcon aria-hidden="true">
+                  {pillar.id === "education" && <SchoolOutlined />}
+                  {pillar.id === "livelihoods" && <GroupsOutlined />}
+                  {pillar.id === "environment" && <NaturePeopleOutlined />}
+                  {pillar.id === "knowledge" && <AutoStoriesOutlined />}
+                </SectionIcon>
+                {pillar.line}
+              </SectionLabel>
               <Heading2 component="h2">{pillar.title}</Heading2>
               <BodyText component="p">{pillar.description}</BodyText>
               <details>
-                <summary>Explore the focus areas</summary>
+                <summary>
+                  Explore the focus areas
+                  {expand}
+                </summary>
                 <p>{pillar.topics}</p>
               </details>
             </Box>
@@ -422,7 +467,10 @@ export function PartnerPage() {
           </Box>
           <Principles>
             <details open>
-              <summary>Listen before we design</summary>
+              <summary>
+                Listen before we design
+                {expand}
+              </summary>
               <p>
                 Start with local priorities, existing resources, and an
                 understanding of how people live and work. Design programs
@@ -430,7 +478,10 @@ export function PartnerPage() {
               </p>
             </details>
             <details>
-              <summary>Build capacity for the long term</summary>
+              <summary>
+                Build capacity for the long term
+                {expand}
+              </summary>
               <p>
                 Prioritize knowledge, local leadership, and institutional
                 strength so communities can carry progress forward with less
@@ -438,7 +489,10 @@ export function PartnerPage() {
               </p>
             </details>
             <details>
-              <summary>Learn from evidence</summary>
+              <summary>
+                Learn from evidence
+                {expand}
+              </summary>
               <p>
                 Agree on what success means, monitor responsibly, and use what
                 we learn to improve the work together.
@@ -492,12 +546,14 @@ export function PartnerPage() {
           <ContactCard>
             <Heading3 component="h3">Let’s start a conversation.</Heading3>
             <ContactEmail href="mailto:info@bstari.org?subject=Partnership%20enquiry">
+              <MailOutlineRounded aria-hidden="true" />
               info@bstari.org
             </ContactEmail>
             <BodyText component="p">
               Or reach us on WhatsApp:
               <br />
               <TextLink href="https://wa.me/6282157245665">
+                <WhatsApp aria-hidden="true" />
                 +62 821-5724-5665 {arrow}
               </TextLink>
             </BodyText>
