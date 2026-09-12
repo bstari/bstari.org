@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import { MuiTheme } from "./mui/MuiTheme";
-import { PageContainer } from "./mui/Primitives";
+import { MuiTheme } from "./mui/mui-theme";
+import { PageContainer } from "./mui/primitives";
 import { colors } from "./mui/theme";
 
 export const navigation = [
@@ -247,4 +247,4 @@ export function SiteFooter() {
   );
 }
 
-export { CtaLink } from "./mui/Primitives";
+export { CtaLink } from "./mui/primitives";

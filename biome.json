@@ -10,6 +10,16 @@
     "domains": {
       "astro": "recommended",
       "react": "recommended"
+    },
+    "rules": {
+      "style": {
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": ["kebab-case"]
+          }
+        }
+      }
     }
   },
   "overrides": [

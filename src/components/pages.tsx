@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import FieldPhoto from "./mui/FieldPhoto";
-import { MuiTheme } from "./mui/MuiTheme";
+import FieldPhoto from "./mui/field-photo";
+import { MuiTheme } from "./mui/mui-theme";
 import {
   Actions,
   BodyText,
@@ -42,7 +42,7 @@ import {
   VisionBand,
   WorkItem,
   WorkList,
-} from "./mui/Primitives";
+} from "./mui/primitives";
 
 const arrow = <span aria-hidden="true">↗</span>;
 
