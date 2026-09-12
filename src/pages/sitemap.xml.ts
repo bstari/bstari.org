@@ -1,6 +1,15 @@
 import type { APIRoute } from "astro";
 
-const routes = ["/", "/about/", "/work/", "/partner/"];
+const routes = [
+  "/",
+  "/about/",
+  "/work/",
+  "/partner/",
+  "/id/",
+  "/id/about/",
+  "/id/work/",
+  "/id/partner/",
+];
 
 export const GET: APIRoute = ({ site }) => {
   const base = site ?? new URL("https://bstari.org/");

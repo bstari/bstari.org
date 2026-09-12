@@ -3,12 +3,25 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
-const pages = ["/", "/about/", "/work/", "/partner/"] as const;
+const pages = [
+  "/",
+  "/about/",
+  "/work/",
+  "/partner/",
+  "/id/",
+  "/id/about/",
+  "/id/work/",
+  "/id/partner/",
+] as const;
 const titles = [
   "Community Development in East Kalimantan | BESTARI",
   "About Belayan Sejahtera Lestari | BESTARI",
   "Sustainable Development in East Kalimantan | BESTARI",
   "Community Partnerships in East Kalimantan | BESTARI",
+  "Pengembangan Masyarakat di Kalimantan Timur | BESTARI",
+  "Tentang Belayan Sejahtera Lestari | BESTARI",
+  "Pembangunan Berkelanjutan di Kalimantan Timur | BESTARI",
+  "Kemitraan untuk Masyarakat di Kalimantan Timur | BESTARI",
 ] as const;
 
 const pagePath = (pathname: string) =>
@@ -40,6 +53,7 @@ describe("published site", () => {
     expect(countElements(html, "h1")).toBe(1);
     expect(html).toContain(`<title>${titles[pageIndex]}</title>`);
     expect(html).toContain(`https://bstari.org${route}`);
+    expect(html).toContain(`lang="${route.startsWith("/id") ? "id" : "en"}"`);
 
     const targets = [
       ...getAttributes(html, "a", "href"),
@@ -64,6 +78,8 @@ describe("published site", () => {
   it("publishes crawler assets and the intended contact actions", async () => {
     const home = await readPage("/");
     const partner = await readPage("/partner/");
+    const indonesianHome = await readPage("/id/");
+    const indonesianPartner = await readPage("/id/partner/");
     const robots = await readFile("dist/robots.txt", "utf8");
     const sitemap = await readFile("dist/sitemap.xml", "utf8");
 
@@ -83,5 +99,12 @@ describe("published site", () => {
     expect(partner).toContain("tel:+6282157245665");
     expect(partner).toContain("https://wa.me/6282157245665");
     expect(partner).not.toContain("mailto:info@bstari.org");
+    expect(indonesianHome).toContain("Masyarakat berdaya.");
+    expect(indonesianHome).toContain("Bermitra dengan kami");
+    expect(indonesianPartner).toContain("Peluang jangka panjang.");
+    expect(indonesianPartner).toContain("Mulai percakapan");
+    expect(indonesianPartner).toContain("tel:+6282157245665");
+    expect(indonesianPartner).toContain("https://wa.me/6282157245665");
+    expect(indonesianPartner).not.toContain("mailto:info@bstari.org");
   });
 });

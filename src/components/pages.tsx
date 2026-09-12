@@ -59,7 +59,123 @@ import {
 const arrow = <ArrowOutwardRounded aria-hidden="true" />;
 const expand = <ExpandMoreRounded aria-hidden="true" />;
 
-export function HomePage() {
+type Locale = "en" | "id";
+type PageProps = { locale?: Locale };
+
+const localizedPath = (locale: Locale, path: string) =>
+  `${locale === "id" ? "/id" : ""}${path}`;
+
+const homeCopy = {
+  en: {
+    place: "From Belayan, East Kalimantan",
+    heroHeading: ["Stronger communities.", "Lasting possibilities."],
+    heroDescription:
+      "We connect local knowledge with wider opportunity, so communities can shape a prosperous, sustainable future.",
+    partnerCta: "Partner with us",
+    workCta: "Explore our work",
+    signature: "Independent social foundation",
+    heroCaption: "Our roots run along the Belayan River.",
+    beliefLabel: "The belief behind BESTARI",
+    beliefHeading: ["Lasting change begins", "with people."],
+    beliefDescription:
+      "Farmers, women, young people, and local institutions hold the knowledge and ambition to move their communities forward. We work alongside them to turn that potential into opportunity.",
+    beliefLink: "Get to know BESTARI",
+    focusLabel: "Our focus",
+    focusHeading: "Connected by purpose.",
+    focusSummary: [
+      "Four areas of work.",
+      "One commitment to stronger communities.",
+    ],
+    focusCards: [
+      {
+        href: "/work/#education",
+        icon: "education",
+        title: ["Education &", "human development"],
+        description: "Practical knowledge. Greater possibilities.",
+      },
+      {
+        href: "/work/#livelihoods",
+        icon: "livelihoods",
+        title: ["Community economy &", "sustainable livelihoods"],
+        description: "Local capacity. Economic independence.",
+      },
+      {
+        href: "/work/#environment",
+        icon: "environment",
+        title: ["Environment, climate &", "sustainable agriculture"],
+        description: "Resilient land. Resilient communities.",
+      },
+      {
+        href: "/work/#knowledge",
+        icon: "knowledge",
+        title: ["Research, knowledge &", "local culture"],
+        description: "Local experience. Shared understanding.",
+      },
+    ],
+    calloutLabel: "A shared investment in the future",
+    calloutHeading: ["Local roots.", "Wider possibilities."],
+    calloutDescription:
+      "Bring your knowledge, resources, and networks. Together, we can build opportunities that communities carry forward.",
+    calloutCta: "Let’s build a partnership",
+  },
+  id: {
+    place: "Berakar di Belayan, Kalimantan Timur",
+    heroHeading: ["Masyarakat berdaya.", "Masa depan yang lebih luas."],
+    heroDescription:
+      "Kami mempertemukan pengetahuan lokal dengan peluang yang lebih luas, agar masyarakat dapat membangun masa depan yang sejahtera dan berkelanjutan.",
+    partnerCta: "Bermitra dengan kami",
+    workCta: "Jelajahi karya kami",
+    signature: "Yayasan sosial independen",
+    heroCaption: "Akar kami tumbuh di sepanjang Sungai Belayan.",
+    beliefLabel: "Gagasan di balik BESTARI",
+    beliefHeading: ["Perubahan yang bermakna", "dimulai dari masyarakat."],
+    beliefDescription:
+      "Petani, perempuan, generasi muda, dan lembaga lokal memiliki pengetahuan, pengalaman, dan tekad untuk memajukan masyarakatnya. Kami bekerja bersama mereka untuk mengubah potensi menjadi peluang.",
+    beliefLink: "Kenali BESTARI",
+    focusLabel: "Bidang kerja kami",
+    focusHeading: "Terhubung oleh tujuan.",
+    focusSummary: [
+      "Empat bidang kerja.",
+      "Satu komitmen untuk masyarakat yang lebih kuat.",
+    ],
+    focusCards: [
+      {
+        href: "/work/#education",
+        icon: "education",
+        title: ["Pendidikan &", "pengembangan manusia"],
+        description: "Pengetahuan praktis. Pilihan yang lebih luas.",
+      },
+      {
+        href: "/work/#livelihoods",
+        icon: "livelihoods",
+        title: ["Ekonomi masyarakat &", "penghidupan berkelanjutan"],
+        description: "Kapasitas lokal. Kemandirian ekonomi.",
+      },
+      {
+        href: "/work/#environment",
+        icon: "environment",
+        title: ["Lingkungan, iklim &", "pertanian berkelanjutan"],
+        description: "Lahan tangguh. Masyarakat tangguh.",
+      },
+      {
+        href: "/work/#knowledge",
+        icon: "knowledge",
+        title: ["Riset, pengetahuan &", "budaya lokal"],
+        description: "Pengalaman lokal. Pemahaman bersama.",
+      },
+    ],
+    calloutLabel: "Investasi bersama untuk masa depan",
+    calloutHeading: ["Akar lokal.", "Peluang yang lebih luas."],
+    calloutDescription:
+      "Satukan pengetahuan, sumber daya, dan jejaring Anda. Bersama, kita dapat membangun peluang yang terus tumbuh dan menjadi milik masyarakat.",
+    calloutCta: "Mari bangun kemitraan",
+  },
+} as const;
+
+export function HomePage({ locale = "en" }: PageProps) {
+  const copy = homeCopy[locale];
+  const link = (path: string) => localizedPath(locale, path);
+
   return (
     <MuiTheme>
       <Hero>
@@ -67,51 +183,48 @@ export function HomePage() {
           <HeroCopy>
             <Place component="p">
               <LocationOnOutlined aria-hidden="true" />
-              From Belayan, East Kalimantan
+              {copy.place}
             </Place>
             <HeroHeading component="h1">
-              Stronger communities.
+              {copy.heroHeading[0]}
               <br />
-              Lasting possibilities.
+              {copy.heroHeading[1]}
             </HeroHeading>
             <HeroDescription component="p">
-              We connect local knowledge with wider opportunity, so communities
-              can shape a prosperous, sustainable future.
+              {copy.heroDescription}
             </HeroDescription>
             <Actions>
-              <CtaLink href="/partner/" gold>
-                Partner with us {arrow}
+              <CtaLink href={link("/partner/")} gold>
+                {copy.partnerCta} {arrow}
               </CtaLink>
-              <QuietLink href="/work/">Explore our work</QuietLink>
+              <QuietLink href={link("/work/")}>{copy.workCta}</QuietLink>
             </Actions>
             <HeroSignature component="p">
               Belayan Sejahtera Lestari
-              <span>Independent social foundation</span>
+              <span>{copy.signature}</span>
             </HeroSignature>
           </HeroCopy>
           <FieldPhoto
             name="hero-belayan"
             alt=""
             hero
-            caption="Our roots run along the Belayan River."
+            caption={copy.heroCaption}
           />
         </HeroGrid>
       </Hero>
 
       <Introduction component="section">
-        <SectionLabel component="p">The belief behind BESTARI</SectionLabel>
+        <SectionLabel component="p">{copy.beliefLabel}</SectionLabel>
         <Box>
           <Heading2 component="h2">
-            Lasting change begins
+            {copy.beliefHeading[0]}
             <br />
-            with people.
+            {copy.beliefHeading[1]}
           </Heading2>
-          <BodyText component="p">
-            Farmers, women, young people, and local institutions hold the
-            knowledge and ambition to move their communities forward. We work
-            alongside them to turn that potential into opportunity.
-          </BodyText>
-          <TextLink href="/about/">Get to know BESTARI {arrow}</TextLink>
+          <BodyText component="p">{copy.beliefDescription}</BodyText>
+          <TextLink href={link("/about/")}>
+            {copy.beliefLink} {arrow}
+          </TextLink>
         </Box>
       </Introduction>
 
@@ -119,137 +232,171 @@ export function HomePage() {
         <FocusInner>
           <SectionHeading>
             <Box>
-              <SectionLabel component="p">Our focus</SectionLabel>
-              <Heading2 component="h2">Connected by purpose.</Heading2>
+              <SectionLabel component="p">{copy.focusLabel}</SectionLabel>
+              <Heading2 component="h2">{copy.focusHeading}</Heading2>
             </Box>
             <BodyText component="p">
-              Four areas of work.
+              {copy.focusSummary[0]}
               <br />
-              One commitment to stronger communities.
+              {copy.focusSummary[1]}
             </BodyText>
           </SectionHeading>
           <FocusGrid>
-            <FocusCard href="/work/#education">
-              <FocusIcon aria-hidden="true">
-                <SchoolOutlined />
-              </FocusIcon>
-              <Heading3 component="h3">
-                Education &amp;
-                <br />
-                human development
-              </Heading3>
-              <p>Practical knowledge. Greater possibilities.</p>
-              <span className="card-arrow">{arrow}</span>
-            </FocusCard>
-            <FocusCard href="/work/#livelihoods">
-              <FocusIcon aria-hidden="true">
-                <GroupsOutlined />
-              </FocusIcon>
-              <Heading3 component="h3">
-                Community economy &amp;
-                <br />
-                sustainable livelihoods
-              </Heading3>
-              <p>Local capacity. Economic independence.</p>
-              <span className="card-arrow">{arrow}</span>
-            </FocusCard>
-            <FocusCard href="/work/#environment">
-              <FocusIcon aria-hidden="true">
-                <AgricultureOutlined />
-              </FocusIcon>
-              <Heading3 component="h3">
-                Environment, climate &amp;
-                <br />
-                sustainable agriculture
-              </Heading3>
-              <p>Resilient land. Resilient communities.</p>
-              <span className="card-arrow">{arrow}</span>
-            </FocusCard>
-            <FocusCard href="/work/#knowledge">
-              <FocusIcon aria-hidden="true">
-                <AutoStoriesOutlined />
-              </FocusIcon>
-              <Heading3 component="h3">
-                Research, knowledge &amp;
-                <br />
-                local culture
-              </Heading3>
-              <p>Local experience. Shared understanding.</p>
-              <span className="card-arrow">{arrow}</span>
-            </FocusCard>
+            {copy.focusCards.map((card) => (
+              <FocusCard href={link(card.href)} key={card.href}>
+                <FocusIcon aria-hidden="true">
+                  {card.icon === "education" && <SchoolOutlined />}
+                  {card.icon === "livelihoods" && <GroupsOutlined />}
+                  {card.icon === "environment" && <AgricultureOutlined />}
+                  {card.icon === "knowledge" && <AutoStoriesOutlined />}
+                </FocusIcon>
+                <Heading3 component="h3">
+                  {card.title[0]}
+                  <br />
+                  {card.title[1]}
+                </Heading3>
+                <p>{card.description}</p>
+                <span className="card-arrow">{arrow}</span>
+              </FocusCard>
+            ))}
           </FocusGrid>
         </FocusInner>
       </FocusSection>
 
       <PartnershipCallout>
         <Box>
-          <SectionLabel component="p">
-            A shared investment in the future
-          </SectionLabel>
+          <SectionLabel component="p">{copy.calloutLabel}</SectionLabel>
           <Heading2 component="h2">
-            Local roots.
+            {copy.calloutHeading[0]}
             <br />
-            Wider possibilities.
+            {copy.calloutHeading[1]}
           </Heading2>
         </Box>
         <Box>
-          <BodyText component="p">
-            Bring your knowledge, resources, and networks. Together, we can
-            build opportunities that communities carry forward.
-          </BodyText>
-          <CtaLink href="/partner/">Let’s build a partnership {arrow}</CtaLink>
+          <BodyText component="p">{copy.calloutDescription}</BodyText>
+          <CtaLink href={link("/partner/")}>
+            {copy.calloutCta} {arrow}
+          </CtaLink>
         </Box>
       </PartnershipCallout>
     </MuiTheme>
   );
 }
 
-export function AboutPage() {
+const aboutCopy = {
+  en: {
+    sectionLabel: "Our story",
+    heading: [
+      "Our roots are local.",
+      "Our responsibility",
+      "spans generations.",
+    ],
+    lead: "Belayan Sejahtera Lestari is an independent social foundation based in Muai Village, East Kalimantan. We believe sustainable development begins with people.",
+    storyHeading: ["Born from experience.", "Built for what comes next."],
+    storyCaption: "Muai Village, Kembang Janggut, East Kalimantan.",
+    storyParagraphs: [
+      "Our story grew from years alongside farmers, workers, women, young people, and rural institutions in the Belayan River region.",
+      "These roots are connected to Koperasi Belayan Sejahtera (KBS). That journey showed us that community prosperity needs more than economic opportunity alone. Learning, leadership, inclusion, and environmental stewardship need space to grow together.",
+      "BESTARI was established to provide that space. BESTARI and KBS are independent institutions, each with its own governance, responsibilities, and direction.",
+    ],
+    visionLabel: "Our vision",
+    vision:
+      "Thriving communities with the knowledge, opportunity, and capacity to build a prosperous and sustainable future.",
+    guidesLabel: "What guides us",
+    guidesHeading: ["A name.", "A commitment."],
+    principles: [
+      {
+        summary: "Belayan — our roots",
+        body: "A river connecting villages, livelihoods, cultures, and generations. Our work begins where our relationships and understanding run deepest.",
+      },
+      {
+        summary: "Sejahtera — shared prosperity",
+        body: "Prosperity means knowledge, dignity, security, participation, and the ability to shape one’s own future, as well as income.",
+      },
+      {
+        summary: "Lestari — our responsibility",
+        body: "Progress must respect ecological limits and leave meaningful opportunities for the generations that follow.",
+      },
+    ],
+    principlesNote:
+      "Integrity, independence, inclusion, respect, sustainability, and collaboration guide how we work.",
+    partnershipLink: "Our approach to partnership",
+  },
+  id: {
+    sectionLabel: "Cerita kami",
+    heading: [
+      "Akar kami tumbuh di sini.",
+      "Tanggung jawab kami",
+      "melintasi generasi.",
+    ],
+    lead: "Belayan Sejahtera Lestari adalah yayasan sosial independen yang berakar di Desa Muai, Kalimantan Timur. Kami percaya pembangunan berkelanjutan dimulai dari masyarakat.",
+    storyHeading: ["Lahir dari pengalaman.", "Dibangun untuk masa depan."],
+    storyCaption: "Desa Muai, Kembang Janggut, Kalimantan Timur.",
+    storyParagraphs: [
+      "Cerita kami tumbuh dari pengalaman bertahun-tahun bekerja bersama petani, pekerja, perempuan, generasi muda, dan lembaga perdesaan di wilayah Sungai Belayan.",
+      "Akar ini terhubung dengan perjalanan Koperasi Belayan Sejahtera (KBS). Dari sana kami belajar bahwa kesejahteraan masyarakat membutuhkan lebih dari sekadar peluang ekonomi. Pembelajaran, kepemimpinan, inklusi, dan kepedulian terhadap lingkungan perlu ruang untuk tumbuh bersama.",
+      "BESTARI didirikan untuk menghadirkan ruang tersebut. BESTARI dan KBS memiliki akar sejarah yang sama, namun keduanya merupakan lembaga independen dengan tata kelola, tanggung jawab, dan arah kelembagaan masing-masing.",
+    ],
+    visionLabel: "Visi kami",
+    vision:
+      "Masyarakat yang sejahtera dan tangguh, dengan pengetahuan, peluang, dan kapasitas untuk membangun masa depan yang berkelanjutan.",
+    guidesLabel: "Makna di balik nama kami",
+    guidesHeading: ["Sebuah nama.", "Sebuah komitmen."],
+    principles: [
+      {
+        summary: "Belayan — akar kami",
+        body: "Sungai yang menghubungkan desa, penghidupan, budaya, dan generasi. Kerja kami dimulai dari tempat hubungan dan pemahaman kami berakar paling dalam.",
+      },
+      {
+        summary: "Sejahtera — kesejahteraan bersama",
+        body: "Bagi kami, kesejahteraan bukan hanya soal pendapatan, tetapi juga pengetahuan, martabat, keamanan, partisipasi, dan kemampuan menentukan masa depan sendiri.",
+      },
+      {
+        summary: "Lestari — tanggung jawab kami",
+        body: "Kemajuan harus menghormati batas ekologis dan meninggalkan peluang yang berarti bagi generasi berikutnya.",
+      },
+    ],
+    principlesNote:
+      "Integritas, kemandirian, inklusi, rasa hormat, keberlanjutan, dan kolaborasi menuntun cara kami bekerja.",
+    partnershipLink: "Cara kami membangun kemitraan",
+  },
+} as const;
+
+export function AboutPage({ locale = "en" }: PageProps) {
+  const copy = aboutCopy[locale];
+  const link = (path: string) => localizedPath(locale, path);
+
   return (
     <MuiTheme>
       <PageHeading component="section">
-        <SectionLabel component="p">Our story</SectionLabel>
+        <SectionLabel component="p">{copy.sectionLabel}</SectionLabel>
         <Heading1 component="h1">
-          Our roots are local.
+          {copy.heading[0]}
           <br />
-          Our responsibility
+          {copy.heading[1]}
           <br />
-          spans generations.
+          {copy.heading[2]}
         </Heading1>
-        <Lead component="p">
-          Belayan Sejahtera Lestari is an independent social foundation based in
-          Muai Village, East Kalimantan. We believe sustainable development
-          begins with people.
-        </Lead>
+        <Lead component="p">{copy.lead}</Lead>
       </PageHeading>
 
       <StoryGrid component="section">
         <FieldPhoto
           name="community-belayan"
           alt=""
-          caption="Muai Village, Kembang Janggut, East Kalimantan."
+          caption={copy.storyCaption}
         />
         <StoryCopy>
           <Heading2 component="h2">
-            Born from experience.
+            {copy.storyHeading[0]}
             <br />
-            Built for what comes next.
+            {copy.storyHeading[1]}
           </Heading2>
-          <BodyText component="p">
-            Our story grew from years alongside farmers, workers, women, young
-            people, and rural institutions in the Belayan River region.
-          </BodyText>
-          <BodyText component="p">
-            These roots are connected to Koperasi Belayan Sejahtera (KBS). That
-            journey showed us that community prosperity needs more than economic
-            opportunity alone. Learning, leadership, inclusion, and
-            environmental stewardship need space to grow together.
-          </BodyText>
-          <BodyText component="p">
-            BESTARI was established to provide that space. BESTARI and KBS are
-            independent institutions, each with its own governance,
-            responsibilities, and direction.
-          </BodyText>
+          {copy.storyParagraphs.map((paragraph) => (
+            <BodyText component="p" key={paragraph}>
+              {paragraph}
+            </BodyText>
+          ))}
         </StoryCopy>
       </StoryGrid>
 
@@ -262,60 +409,33 @@ export function AboutPage() {
             "@media (max-width: 759px)": { width: "calc(100% - 40px)" },
           }}
         >
-          <SectionLabel component="p">Our vision</SectionLabel>
-          <Heading2 component="h2">
-            Thriving communities with the knowledge, opportunity, and capacity
-            to build a prosperous and sustainable future.
-          </Heading2>
+          <SectionLabel component="p">{copy.visionLabel}</SectionLabel>
+          <Heading2 component="h2">{copy.vision}</Heading2>
         </Box>
       </VisionBand>
 
       <Introduction component="section">
         <Box>
-          <SectionLabel component="p">What guides us</SectionLabel>
+          <SectionLabel component="p">{copy.guidesLabel}</SectionLabel>
           <Heading2 component="h2">
-            A name.
-            <br />A commitment.
+            {copy.guidesHeading[0]}
+            <br />
+            {copy.guidesHeading[1]}
           </Heading2>
         </Box>
         <Principles>
-          <details open>
-            <summary>
-              Belayan — our roots
-              {expand}
-            </summary>
-            <p>
-              A river connecting villages, livelihoods, cultures, and
-              generations. Our work begins where our relationships and
-              understanding run deepest.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Sejahtera — shared prosperity
-              {expand}
-            </summary>
-            <p>
-              Prosperity means knowledge, dignity, security, participation, and
-              the ability to shape one’s own future, as well as income.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Lestari — our responsibility
-              {expand}
-            </summary>
-            <p>
-              Progress must respect ecological limits and leave meaningful
-              opportunities for the generations that follow.
-            </p>
-          </details>
-          <PrinciplesNote component="p">
-            Integrity, independence, inclusion, respect, sustainability, and
-            collaboration guide how we work.
-          </PrinciplesNote>
-          <TextLink href="/partner/">
-            Our approach to partnership {arrow}
+          {copy.principles.map((principle, index) => (
+            <details open={index === 0} key={principle.summary}>
+              <summary>
+                {principle.summary}
+                {expand}
+              </summary>
+              <p>{principle.body}</p>
+            </details>
+          ))}
+          <PrinciplesNote component="p">{copy.principlesNote}</PrinciplesNote>
+          <TextLink href={link("/partner/")}>
+            {copy.partnershipLink} {arrow}
           </TextLink>
         </Principles>
       </Introduction>
@@ -365,30 +485,105 @@ const pillars = [
   },
 ] as const;
 
-export function WorkPage() {
+const indonesianPillars = [
+  {
+    id: "education",
+    title: "Pendidikan & pengembangan manusia",
+    line: "Pengetahuan membuka pilihan.",
+    description:
+      "Pembelajaran praktis dan mudah diakses untuk memperkuat kemampuan masyarakat dalam mengambil keputusan, memimpin, dan membuka peluang baru.",
+    topics:
+      "Pendidikan masyarakat · Literasi keuangan · Kepemimpinan · Keterampilan kerja",
+    photo: "training-learning",
+  },
+  {
+    id: "livelihoods",
+    title: "Ekonomi masyarakat & penghidupan berkelanjutan",
+    line: "Peluang yang tumbuh dari dalam.",
+    description:
+      "Mendukung petani kecil, perempuan, generasi muda, dan usaha lokal untuk membangun keterampilan serta kelembagaan yang memperkuat kemandirian ekonomi.",
+    topics:
+      "Pengembangan usaha · Manajemen keuangan · Akses pasar · Penguatan kelembagaan",
+    photo: "training-livelihoods",
+  },
+  {
+    id: "environment",
+    title: "Lingkungan, iklim & pertanian berkelanjutan",
+    line: "Kesejahteraan bergantung pada lingkungan yang terjaga.",
+    description:
+      "Menghubungkan kesejahteraan masyarakat dengan produksi yang bertanggung jawab, pertanian tangguh, dan pengelolaan sumber daya alam yang menopang kehidupan perdesaan.",
+    topics:
+      "Pertanian berkelanjutan · Ketangguhan iklim · Pengelolaan lahan yang bertanggung jawab",
+    photo: "training-agriculture",
+  },
+  {
+    id: "knowledge",
+    title: "Riset, pengetahuan & budaya lokal",
+    line: "Pengalaman lokal layak didengar.",
+    description:
+      "Mendokumentasikan pengetahuan masyarakat dan menghubungkannya dengan riset, data, teknologi, serta jejaring yang lebih luas agar pengalaman lokal dapat memperkaya praktik pembangunan di berbagai tempat.",
+    topics: "Riset · Dokumentasi · Pertukaran pengetahuan · Budaya lokal",
+    photo: "community-knowledge",
+  },
+] as const;
+
+const workCopy = {
+  en: {
+    sectionLabel: "Our work",
+    heading: ["Different starting points.", "A shared future."],
+    lead: "Our four strategic pillars connect learning, livelihoods, the environment, and local knowledge. Each begins with the people who know their communities best.",
+    jumpLabel: "Focus areas",
+    jumpLinks: ["Learning", "Livelihoods", "Environment", "Knowledge"],
+    detailLabel: "Explore the focus areas",
+    portfolioLabel: "Project portfolio",
+    portfolioHeading: "Stories from the field.",
+    portfolioDescription:
+      "We are preparing our project documentation for publication. This page currently presents our strategic focus; individual project stories and results will be shared as they are documented.",
+    ctaHeading: "See a shared priority?",
+    ctaLabel: "Explore a partnership",
+  },
+  id: {
+    sectionLabel: "Bidang kerja kami",
+    heading: ["Beragam titik awal.", "Masa depan bersama."],
+    lead: "Empat pilar strategis kami menghubungkan pembelajaran, penghidupan, lingkungan, dan pengetahuan lokal. Setiap pilar dimulai dari masyarakat yang paling memahami konteksnya.",
+    jumpLabel: "Bidang fokus",
+    jumpLinks: ["Pembelajaran", "Penghidupan", "Lingkungan", "Pengetahuan"],
+    detailLabel: "Lihat bidang fokus",
+    portfolioLabel: "Portofolio proyek",
+    portfolioHeading: "Cerita dari lapangan.",
+    portfolioDescription:
+      "Kami sedang menyiapkan dokumentasi proyek untuk dipublikasikan. Untuk saat ini, halaman ini menyajikan fokus strategis kami; cerita proyek dan hasilnya akan kami bagikan setelah terdokumentasi.",
+    ctaHeading: "Menemukan prioritas bersama?",
+    ctaLabel: "Jelajahi kemitraan",
+  },
+} as const;
+
+export function WorkPage({ locale = "en" }: PageProps) {
+  const copy = workCopy[locale];
+  const localizedPillars = locale === "id" ? indonesianPillars : pillars;
+  const link = (path: string) => localizedPath(locale, path);
+
   return (
     <MuiTheme>
       <PageHeading component="section">
-        <SectionLabel component="p">Our work</SectionLabel>
+        <SectionLabel component="p">{copy.sectionLabel}</SectionLabel>
         <Heading1 component="h1">
-          Different starting points.
-          <br />A shared future.
+          {copy.heading[0]}
+          <br />
+          {copy.heading[1]}
         </Heading1>
-        <Lead component="p">
-          Our four strategic pillars connect learning, livelihoods, the
-          environment, and local knowledge. Each begins with the people who know
-          their communities best.
-        </Lead>
-        <JumpLinks aria-label="Focus areas">
-          <a href="#education">Learning</a>
-          <a href="#livelihoods">Livelihoods</a>
-          <a href="#environment">Environment</a>
-          <a href="#knowledge">Knowledge</a>
+        <Lead component="p">{copy.lead}</Lead>
+        <JumpLinks aria-label={copy.jumpLabel}>
+          {copy.jumpLinks.map((label, index) => (
+            <a href={`#${localizedPillars[index].id}`} key={label}>
+              {label}
+            </a>
+          ))}
         </JumpLinks>
       </PageHeading>
 
       <WorkList>
-        {pillars.map((pillar) => (
+        {localizedPillars.map((pillar) => (
           <WorkItem id={pillar.id} key={pillar.id}>
             <FieldPhoto name={pillar.photo} alt="" />
             <Box>
@@ -405,7 +600,7 @@ export function WorkPage() {
               <BodyText component="p">{pillar.description}</BodyText>
               <details>
                 <summary>
-                  Explore the focus areas
+                  {copy.detailLabel}
                   {expand}
                 </summary>
                 <p>{pillar.topics}</p>
@@ -416,20 +611,16 @@ export function WorkPage() {
       </WorkList>
 
       <PortfolioNote>
-        <SectionLabel component="p">Project portfolio</SectionLabel>
-        <Heading2 component="h2">Stories from the field.</Heading2>
-        <BodyText component="p">
-          We are preparing our project documentation for publication. This page
-          currently presents our strategic focus; individual project stories and
-          results will be shared as they are documented.
-        </BodyText>
+        <SectionLabel component="p">{copy.portfolioLabel}</SectionLabel>
+        <Heading2 component="h2">{copy.portfolioHeading}</Heading2>
+        <BodyText component="p">{copy.portfolioDescription}</BodyText>
       </PortfolioNote>
 
       <VisionBand>
         <CompactCta>
-          <Heading2 component="h2">See a shared priority?</Heading2>
-          <CtaLink href="/partner/" gold>
-            Explore a partnership {arrow}
+          <Heading2 component="h2">{copy.ctaHeading}</Heading2>
+          <CtaLink href={link("/partner/")} gold>
+            {copy.ctaLabel} {arrow}
           </CtaLink>
         </CompactCta>
       </VisionBand>
@@ -437,131 +628,176 @@ export function WorkPage() {
   );
 }
 
-export function PartnerPage() {
+const partnerCopy = {
+  en: {
+    sectionLabel: "Partner with BESTARI",
+    heading: ["Shared purpose.", "Lasting possibility."],
+    lead: "Meaningful partnership brings together resources, knowledge, networks, and trust. Let’s connect your priorities with the strengths of Belayan’s communities.",
+    startCta: "Start a conversation",
+    workingLabel: "Working together",
+    workingHeading: ["Community at the center.", "From the beginning."],
+    principles: [
+      {
+        summary: "Listen before we design",
+        body: "Start with local priorities, existing resources, and an understanding of how people live and work. Design programs alongside the communities involved.",
+      },
+      {
+        summary: "Build capacity for the long term",
+        body: "Prioritize knowledge, local leadership, and institutional strength so communities can carry progress forward with less external support.",
+      },
+      {
+        summary: "Learn from evidence",
+        body: "Agree on what success means, monitor responsibly, and use what we learn to improve the work together.",
+      },
+    ],
+    commitmentLabel: "Our commitment to trust",
+    accountabilityHeading: ["Accountability", "that grows with us."],
+    accountabilityParagraphs: [
+      "BESTARI is developing its systems for governance, financial accountability, program monitoring, and responsible decision-making.",
+      "Our commitment is to build an institution where resources can be traced, programs evaluated, and decisions explained. Institutional independence and community interests guide our partnerships.",
+      "We welcome philanthropic organizations, development agencies, universities, civil society, government, and responsible private-sector partners.",
+    ],
+    contactLabel: "Begin a partnership",
+    contactHeading: ["What could we", "build together?"],
+    contactDescription:
+      "Tell us about your priorities, the communities you hope to work with, and the knowledge or resources you would like to contribute.",
+    contactTitle: "Let’s start a conversation.",
+    messagePrompt: "Prefer messaging?",
+    whatsappLabel: "WhatsApp our team",
+    callLabel: "Call our team",
+    contactNote:
+      "To help us begin, include your organization, area of interest, and proposed timeframe.",
+  },
+  id: {
+    sectionLabel: "Bermitra dengan BESTARI",
+    heading: ["Tujuan bersama.", "Peluang jangka panjang."],
+    lead: "Kemitraan yang bermakna mempertemukan sumber daya, pengetahuan, jejaring, dan kepercayaan. Mari hubungkan prioritas Anda dengan kekuatan masyarakat Belayan.",
+    startCta: "Mulai percakapan",
+    workingLabel: "Bekerja bersama",
+    workingHeading: ["Masyarakat sebagai pusat.", "Sejak awal."],
+    principles: [
+      {
+        summary: "Dengarkan sebelum merancang",
+        body: "Mulai dari prioritas lokal, sumber daya yang tersedia, dan pemahaman tentang cara masyarakat hidup serta bekerja. Rancang program bersama komunitas yang terlibat.",
+      },
+      {
+        summary: "Bangun kapasitas untuk jangka panjang",
+        body: "Utamakan pengetahuan, kepemimpinan lokal, dan kekuatan kelembagaan agar masyarakat dapat melanjutkan kemajuan dengan dukungan eksternal yang semakin kecil.",
+      },
+      {
+        summary: "Belajar dari data dan pengalaman",
+        body: "Sepakati ukuran keberhasilan, lakukan pemantauan secara bertanggung jawab, dan gunakan pembelajaran untuk menyempurnakan kerja bersama.",
+      },
+    ],
+    commitmentLabel: "Komitmen kami untuk menjaga kepercayaan",
+    accountabilityHeading: ["Akuntabilitas", "yang tumbuh bersama kami."],
+    accountabilityParagraphs: [
+      "BESTARI sedang membangun sistem tata kelola, akuntabilitas keuangan, pemantauan program, dan pengambilan keputusan yang bertanggung jawab.",
+      "Kami berkomitmen membangun lembaga yang dapat menelusuri sumber daya, mengevaluasi program, dan menjelaskan setiap keputusan. Kemandirian lembaga serta kepentingan masyarakat menjadi dasar kemitraan kami.",
+      "Kami terbuka untuk bermitra dengan organisasi filantropi, lembaga pembangunan, universitas, masyarakat sipil, pemerintah, dan sektor swasta yang bertanggung jawab.",
+    ],
+    contactLabel: "Mulai kemitraan",
+    contactHeading: ["Apa yang dapat", "kita bangun bersama?"],
+    contactDescription:
+      "Ceritakan prioritas Anda, masyarakat yang ingin Anda dampingi, serta pengetahuan atau sumber daya yang ingin Anda kontribusikan.",
+    contactTitle: "Mari memulai percakapan.",
+    messagePrompt: "Lebih nyaman berkirim pesan?",
+    whatsappLabel: "Hubungi tim kami di WhatsApp",
+    callLabel: "Telepon tim kami",
+    contactNote:
+      "Agar kami dapat menindaklanjuti, sertakan nama organisasi, bidang yang diminati, dan perkiraan waktu pelaksanaan.",
+  },
+} as const;
+
+export function PartnerPage({ locale = "en" }: PageProps) {
+  const copy = partnerCopy[locale];
+
   return (
     <MuiTheme>
       <PageHeading component="section">
-        <SectionLabel component="p">Partner with BESTARI</SectionLabel>
+        <SectionLabel component="p">{copy.sectionLabel}</SectionLabel>
         <Heading1 component="h1">
-          Shared purpose.
+          {copy.heading[0]}
           <br />
-          Lasting possibility.
+          {copy.heading[1]}
         </Heading1>
-        <Lead component="p">
-          Meaningful partnership brings together resources, knowledge, networks,
-          and trust. Let’s connect your priorities with the strengths of
-          Belayan’s communities.
-        </Lead>
-        <CtaLink href="#conversation">Start a conversation {arrow}</CtaLink>
+        <Lead component="p">{copy.lead}</Lead>
+        <CtaLink href="#conversation">
+          {copy.startCta} {arrow}
+        </CtaLink>
       </PageHeading>
 
       <FocusSection>
         <Introduction component="section">
           <Box>
-            <SectionLabel component="p">Working together</SectionLabel>
+            <SectionLabel component="p">{copy.workingLabel}</SectionLabel>
             <Heading2 component="h2">
-              Community at the center.
+              {copy.workingHeading[0]}
               <br />
-              From the beginning.
+              {copy.workingHeading[1]}
             </Heading2>
           </Box>
           <Principles>
-            <details open>
-              <summary>
-                Listen before we design
-                {expand}
-              </summary>
-              <p>
-                Start with local priorities, existing resources, and an
-                understanding of how people live and work. Design programs
-                alongside the communities involved.
-              </p>
-            </details>
-            <details>
-              <summary>
-                Build capacity for the long term
-                {expand}
-              </summary>
-              <p>
-                Prioritize knowledge, local leadership, and institutional
-                strength so communities can carry progress forward with less
-                external support.
-              </p>
-            </details>
-            <details>
-              <summary>
-                Learn from evidence
-                {expand}
-              </summary>
-              <p>
-                Agree on what success means, monitor responsibly, and use what
-                we learn to improve the work together.
-              </p>
-            </details>
+            {copy.principles.map((principle, index) => (
+              <details open={index === 0} key={principle.summary}>
+                <summary>
+                  {principle.summary}
+                  {expand}
+                </summary>
+                <p>{principle.body}</p>
+              </details>
+            ))}
           </Principles>
         </Introduction>
       </FocusSection>
 
       <Introduction component="section">
         <Box>
-          <SectionLabel component="p">Our commitment to trust</SectionLabel>
+          <SectionLabel component="p">{copy.commitmentLabel}</SectionLabel>
           <Heading2 component="h2">
-            Accountability
+            {copy.accountabilityHeading[0]}
             <br />
-            that grows with us.
+            {copy.accountabilityHeading[1]}
           </Heading2>
         </Box>
         <Box>
-          <BodyText component="p">
-            BESTARI is developing its systems for governance, financial
-            accountability, program monitoring, and responsible decision-making.
-          </BodyText>
-          <BodyText component="p">
-            Our commitment is to build an institution where resources can be
-            traced, programs evaluated, and decisions explained. Institutional
-            independence and community interests guide our partnerships.
-          </BodyText>
-          <BodyText component="p">
-            We welcome philanthropic organizations, development agencies,
-            universities, civil society, government, and responsible
-            private-sector partners.
-          </BodyText>
+          {copy.accountabilityParagraphs.map((paragraph) => (
+            <BodyText component="p" key={paragraph}>
+              {paragraph}
+            </BodyText>
+          ))}
         </Box>
       </Introduction>
 
       <ContactSection id="conversation">
         <ContactGrid>
           <Box>
-            <SectionLabel component="p">Begin a partnership</SectionLabel>
+            <SectionLabel component="p">{copy.contactLabel}</SectionLabel>
             <Heading2 component="h2">
-              What could we
+              {copy.contactHeading[0]}
               <br />
-              build together?
+              {copy.contactHeading[1]}
             </Heading2>
-            <BodyText component="p">
-              Tell us about your priorities, the communities you hope to work
-              with, and the knowledge or resources you would like to contribute.
-            </BodyText>
+            <BodyText component="p">{copy.contactDescription}</BodyText>
           </Box>
           <ContactCard>
-            <Heading3 component="h3">Let’s start a conversation.</Heading3>
+            <Heading3 component="h3">{copy.contactTitle}</Heading3>
             <ContactPhone href="tel:+6282157245665">
               <PhoneRounded aria-hidden="true" />
               +62 821-5724-5665
             </ContactPhone>
             <BodyText component="p">
-              Prefer messaging?
+              {copy.messagePrompt}
               <br />
               <TextLink href="https://wa.me/6282157245665">
                 <WhatsApp aria-hidden="true" />
-                WhatsApp our team {arrow}
+                {copy.whatsappLabel} {arrow}
               </TextLink>
             </BodyText>
-            <CtaLink href="tel:+6282157245665">Call our team {arrow}</CtaLink>
-            <SmallText component="p">
-              To help us begin, include your organization, area of interest, and
-              proposed timeframe.
-            </SmallText>
+            <CtaLink href="tel:+6282157245665">
+              {copy.callLabel} {arrow}
+            </CtaLink>
+            <SmallText component="p">{copy.contactNote}</SmallText>
           </ContactCard>
         </ContactGrid>
       </ContactSection>

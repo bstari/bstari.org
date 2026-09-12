@@ -7,14 +7,27 @@ import "@fontsource/source-serif-4/latin-400.css";
 interface Props {
   title: string;
   description: string;
+  lang?: "en" | "id";
 }
-const { title, description } = Astro.props;
+const { title, description, lang = "en" } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site);
 const image = new URL("/full-name-logo.png", Astro.site);
 const socialImage = new URL("/social-card.png", Astro.site);
+const alternatePath = Astro.url.pathname.startsWith("/id")
+  ? Astro.url.pathname.replace(/^\/id/, "") || "/"
+  : `/id${Astro.url.pathname === "/" ? "/" : Astro.url.pathname}`;
+const englishUrl = new URL(
+  lang === "id" ? alternatePath : Astro.url.pathname,
+  Astro.site,
+);
+const indonesianUrl = new URL(
+  lang === "id" ? Astro.url.pathname : alternatePath,
+  Astro.site,
+);
+const isIndonesian = lang === "id";
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +37,9 @@ const socialImage = new URL("/social-card.png", Astro.site);
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#06284f" />
     <link rel="canonical" href={url} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="id" href={indonesianUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Belayan Sejahtera Lestari" />
     <meta property="og:title" content={`${title} | BESTARI`} />
@@ -33,12 +49,12 @@ const socialImage = new URL("/social-card.png", Astro.site);
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Belayan Sejahtera Lestari — community development in East Kalimantan" />
+    <meta property="og:image:alt" content={isIndonesian ? "Belayan Sejahtera Lestari — pengembangan masyarakat di Kalimantan Timur" : "Belayan Sejahtera Lestari — community development in East Kalimantan"} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | BESTARI`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content="Belayan Sejahtera Lestari — community development in East Kalimantan" />
+    <meta name="twitter:image:alt" content={isIndonesian ? "Belayan Sejahtera Lestari — pengembangan masyarakat di Kalimantan Timur" : "Belayan Sejahtera Lestari — community development in East Kalimantan"} />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -48,16 +64,16 @@ const socialImage = new URL("/social-card.png", Astro.site);
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org', '@type': 'Organization',
       name: 'Belayan Sejahtera Lestari', alternateName: 'BESTARI',
-      description: 'Independent social foundation supporting community-led development in East Kalimantan.',
+      description,
       url: Astro.site, logo: image, email: 'info@bstari.org', telephone: '+6282157245665',
       contactPoint: { '@type': 'ContactPoint', contactType: 'partnership enquiries', email: 'info@bstari.org', telephone: '+6282157245665' },
       address: { '@type': 'PostalAddress', addressLocality: 'Muai Village', addressRegion: 'Kembang Janggut, Kutai Kartanegara, East Kalimantan', addressCountry: 'ID' },
     })} />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <SiteHeader pathname={Astro.url.pathname} />
+    <a class="skip-link" href="#main">{isIndonesian ? "Lewati ke konten" : "Skip to content"}</a>
+    <SiteHeader pathname={Astro.url.pathname} locale={lang} />
     <main id="main"><slot /></main>
-    <SiteFooter />
+    <SiteFooter locale={lang} />
   </body>
 </html>
