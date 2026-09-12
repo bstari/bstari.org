@@ -4,13 +4,6 @@ import type { ReactNode } from "react";
 import { colors, siteTheme } from "./theme";
 
 const globalStyles = {
-  "@font-face": {
-    "font-family": '"Source Serif 4"',
-    fontStyle: "normal",
-    fontWeight: 400,
-    fontDisplay: "swap",
-    src: 'url("/fonts/source-serif-4.ttf") format("truetype")',
-  },
   "*, *::before, *::after": { boxSizing: "border-box" },
   html: { scrollBehavior: "smooth", scrollPaddingTop: "110px" },
   body: {
