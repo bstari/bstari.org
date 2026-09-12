@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 
@@ -11,12 +11,6 @@ const { title, description } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site);
 const image = new URL("/full-name-logo.png", Astro.site);
 const socialImage = new URL("/social-card.png", Astro.site);
-const links = [
-  ["/", "Home"],
-  ["/about/", "Our story"],
-  ["/work/", "Our work"],
-  ["/partner/", "Partner with us"],
-];
 ---
 <!doctype html>
 <html lang="en">
@@ -61,26 +55,8 @@ const links = [
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/" aria-label="BESTARI home"><img src="/full-name-logo.png" alt="Belayan Sejahtera Lestari" width="2700" height="1080" /></a>
-        <nav class="desktop-nav" aria-label="Main navigation">
-          {links.map(([href, label]) => <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined}>{label}</a>)}
-        </nav>
-        <details class="mobile-nav">
-          <summary>Menu <span aria-hidden="true">+</span></summary>
-          <nav aria-label="Mobile navigation">{links.map(([href, label]) => <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined}>{label}</a>)}</nav>
-        </details>
-      </div>
-    </header>
+    <SiteHeader pathname={Astro.url.pathname} />
     <main id="main"><slot /></main>
-    <footer class="site-footer">
-      <div class="container footer-top">
-        <div><a class="footer-name" href="/">BESTARI</a><p>Belayan Sejahtera Lestari<br />Continue the Sustainability</p></div>
-        <p>Rooted in Muai Village.<br />Kembang Janggut, Kutai Kartanegara<br />East Kalimantan, Indonesia</p>
-        <nav aria-label="Footer navigation"><a href="/about/">Our story</a><a href="/work/">Our work</a><a href="/partner/">Partner with us</a><a href="mailto:info@bstari.org">info@bstari.org</a></nav>
-      </div>
-      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Belayan Sejahtera Lestari</span><span>For the generations ahead.</span></div>
-    </footer>
+    <SiteFooter />
   </body>
 </html>

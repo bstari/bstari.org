@@ -1,10 +1,8 @@
 ---
-import FieldPhoto from "../components/FieldPhoto.astro";
+import { AboutPage } from "../components/Pages";
 import Site from "../layouts/Site.astro";
 ---
+
 <Site title="About Belayan Sejahtera Lestari" description="Learn about BESTARI, an independent social foundation rooted in the Belayan River region of East Kalimantan.">
-  <section class="page-heading container"><p class="section-label">Our story</p><h1>Our roots are local.<br />Our responsibility<br />spans generations.</h1><p class="lead">Belayan Sejahtera Lestari is an independent social foundation based in Muai Village, East Kalimantan. We believe sustainable development begins with people.</p></section>
-  <section class="container story-grid section-bottom"><FieldPhoto name="community-belayan" alt="" caption="Muai Village, Kembang Janggut, East Kalimantan." /><div class="story-copy"><h2>Born from experience.<br />Built for what comes next.</h2><p>Our story grew from years alongside farmers, workers, women, young people, and rural institutions in the Belayan River region.</p><p>These roots are connected to Koperasi Belayan Sejahtera (KBS). That journey showed us that community prosperity needs more than economic opportunity alone. Learning, leadership, inclusion, and environmental stewardship need space to grow together.</p><p>BESTARI was established to provide that space. BESTARI and KBS are independent institutions, each with its own governance, responsibilities, and direction.</p></div></section>
-  <section class="vision-band"><div class="container"><p class="section-label">Our vision</p><h2>Thriving communities with the knowledge, opportunity, and capacity to build a prosperous and sustainable future.</h2></div></section>
-  <section class="section container introduction"><div><p class="section-label">What guides us</p><h2>A name.<br />A commitment.</h2></div><div class="principles"><details open><summary>Belayan — our roots</summary><p>A river connecting villages, livelihoods, cultures, and generations. Our work begins where our relationships and understanding run deepest.</p></details><details><summary>Sejahtera — shared prosperity</summary><p>Prosperity means knowledge, dignity, security, participation, and the ability to shape one’s own future, as well as income.</p></details><details><summary>Lestari — our responsibility</summary><p>Progress must respect ecological limits and leave meaningful opportunities for the generations that follow.</p></details><p class="principles-note">Integrity, independence, inclusion, respect, sustainability, and collaboration guide how we work.</p><a class="text-link" href="/partner/">Our approach to partnership <span aria-hidden="true">↗</span></a></div></section>
+  <AboutPage />
 </Site>
