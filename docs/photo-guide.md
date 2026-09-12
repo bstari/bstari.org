@@ -1,6 +1,19 @@
 # BESTARI photography handoff
 
-Place the following JPEG files in `public/photos/`, using the exact lowercase filenames below. Run `bun run build` after adding them (restart the development server for a local preview). The design detects available photos at build time and replaces the decorative river artwork. No stock or generated photographs represent BESTARI’s work.
+> **Review-only stock set.** The six JPEGs currently in `public/photos/` are free Unsplash stock images used to review the layout and image treatment. They do not depict BESTARI projects, beneficiaries, or Muai Village; replace them with approved BESTARI photography before publication.
+
+Each source page states that the image is free to use under the Unsplash License.
+
+| Filename | Review use | Photographer and source |
+| --- | --- | --- |
+| `hero-belayan.jpg` | River and rainforest setting | Aidil Putera — [Unsplash photo](https://unsplash.com/photos/a-river-running-through-a-forest-filled-with-lots-of-trees-mKCRWwj_s_I) |
+| `community-belayan.jpg` | Community portrait | Rian A. Saputro — [Unsplash photo](https://unsplash.com/photos/two-women-sitting-on-the-ground-in-a-village-vr2jWFQim0w) |
+| `training-learning.jpg` | Skills workshop | Hafizha Anisa — [Unsplash photo](https://unsplash.com/photos/women-painting-batik-designs-on-fabric-XOvNsILkVCo) |
+| `training-livelihoods.jpg` | Rural livelihood activity | Maximus Beaumont — [Unsplash photo](https://unsplash.com/photos/a-woman-works-in-a-rural-sunny-setting-1vPuVtmTgvM) |
+| `training-agriculture.jpg` | Sustainable agriculture | Jan Hildebrand — [Unsplash photo](https://unsplash.com/photos/farmers-working-in-flooded-rice-paddies-surrounded-by-palm-trees-azdSLacrFMA) |
+| `community-knowledge.jpg` | Group discussion | Sebastian Ciepiela — [Unsplash photo](https://unsplash.com/photos/group-of-women-sitting-around-a-table-discussing-swhA61y25iE) |
+
+To replace the placeholders, place the following JPEG files in `public/photos/`, using the exact lowercase filenames below. Run `bun run build` after adding them (restart the development server for a local preview). The design detects available photos at build time and replaces the decorative river artwork.
 
 | Priority | Filename | Best image for this space | Suggested size |
 | --- | --- | --- | --- |
@@ -13,7 +26,7 @@ Place the following JPEG files in `public/photos/`, using the exact lowercase fi
 
 Choose real interactions, natural light, and clear expressions over rows of people holding a banner. Avoid embedded text, heavy filters, watermarks, and nearly identical group shots. Aim for files under 500 KB, and preserve original files separately. Use images with permission to publish; take particular care with identifiable children.
 
-For each photo, supply the real activity name, date, village, organizer, photographer/credit, a short description, and any publication restrictions. Photo alt text is intentionally empty until the image has been seen: update the corresponding `alt` prop in `src/pages/index.astro`, `about.astro`, or the work-page pillar data after reviewing the actual image. Confirm or adjust location captions as well.
+For each replacement, supply the real activity name, date, village, organizer, photographer/credit, a short description, and any publication restrictions. The review set has descriptive alt text; update the corresponding `alt` prop in `src/components/pages.tsx` after reviewing each BESTARI photograph. Confirm or adjust location captions as well.
 
 ## Project portfolio content
 
