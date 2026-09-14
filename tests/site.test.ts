@@ -112,6 +112,7 @@ describe("published site", () => {
     );
     expect(home).toContain("Lasting progress.");
     expect(home).toContain("Sustainability takes shape");
+    expect(home).not.toContain("From Belayan, East Kalimantan");
     expect(home).not.toContain("Illustrative");
     expect(home).not.toContain("Replace with");
     const work = await readPage("/work/");
@@ -121,6 +122,9 @@ describe("published site", () => {
     expect(partner).toContain("https://wa.me/6282157245665");
     expect(partner).not.toContain("mailto:info@bstari.org");
     expect(indonesianHome).toContain("Kemajuan lestari.");
+    expect(indonesianHome).not.toContain(
+      "Berakar di Belayan, Kalimantan Timur",
+    );
     expect(indonesianHome).toContain("Bermitra dengan kami");
     expect(indonesianPartner).toContain("Kemajuan yang berlanjut.");
     expect(indonesianPartner).toContain("Mulai percakapan");

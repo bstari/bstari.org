@@ -173,18 +173,6 @@ export const HeroCopy = styled(Box)<SemanticProps>(({ theme }) => ({
   [theme.breakpoints.down("sm")]: { paddingBlock: "10px 0" },
 }));
 
-export const Place = styled(Typography)<SemanticProps>(({ theme }) => ({
-  alignItems: "center",
-  color: "#d9e1e7",
-  display: "flex",
-  fontSize: "0.8rem",
-  gap: 10,
-  lineHeight: 1.5,
-  margin: "0 0 36px",
-  "& > svg": { color: colors.gold, flex: "0 0 auto", fontSize: "1.2rem" },
-  [theme.breakpoints.down("sm")]: { marginBottom: 25 },
-}));
-
 export const HeroHeading = styled(Heading1)<SemanticProps>(({ theme }) => ({
   fontSize: "clamp(3.2rem, 4.8vw, 4.7rem)",
   lineHeight: 1.12,

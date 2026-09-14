@@ -3,7 +3,6 @@ import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
 import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import GroupsOutlined from "@mui/icons-material/GroupsOutlined";
-import LocationOnOutlined from "@mui/icons-material/LocationOnOutlined";
 import NaturePeopleOutlined from "@mui/icons-material/NaturePeopleOutlined";
 import PhoneRounded from "@mui/icons-material/PhoneRounded";
 import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
@@ -39,7 +38,6 @@ import {
   Lead,
   PageHeading,
   PartnershipCallout,
-  Place,
   PortfolioNote,
   Principles,
   PrinciplesNote,
@@ -68,7 +66,6 @@ const localizedPath = (locale: Locale, path: string) =>
 
 const homeCopy = {
   en: {
-    place: "From Belayan, East Kalimantan",
     heroHeading: ["Lasting progress.", "For generations."],
     heroDescription:
       "BESTARI works with communities and local institutions to strengthen knowledge, livelihoods, and care for the environment so progress can continue across generations.",
@@ -141,7 +138,6 @@ const homeCopy = {
     calloutCta: "Let’s build a partnership",
   },
   id: {
-    place: "Berakar di Belayan, Kalimantan Timur",
     heroHeading: ["Kemajuan lestari.", "Lintas generasi."],
     heroDescription:
       "BESTARI bekerja bersama masyarakat dan lembaga lokal untuk memperkuat pengetahuan, penghidupan, dan kepedulian terhadap lingkungan agar kemajuan dapat berlanjut lintas generasi.",
@@ -224,10 +220,6 @@ export function HomePage({ locale = "en" }: PageProps) {
       <Hero>
         <HeroGrid>
           <HeroCopy>
-            <Place component="p">
-              <LocationOnOutlined aria-hidden="true" />
-              {copy.place}
-            </Place>
             <HeroHeading component="h1">
               {copy.heroHeading[0]}
               <br />
