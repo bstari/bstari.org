@@ -97,10 +97,10 @@ describe("published site", () => {
       existsSync("public/photos/hero-belayan.jpg"),
     );
     expect(existsSync("public/videos/muai.mp4")).toBe(true);
-    expect(home).toContain('src="/videos/belayan.mp4"');
-    expect(home).toContain('src="/videos/belayan-en.vtt"');
     expect(home).toMatch(/<video\b/);
     expect(home).toContain('preload="none"');
+    expect(home).toContain('poster="/photos/hero-belayan.jpg"');
+    expect(home).not.toContain('src="/videos/belayan.mp4"');
     expect(home).not.toMatch(/<video[^>]*loop/);
     expect(home).not.toMatch(/<video[^>]*controls/);
     expect(home).not.toContain("data-video-src");
