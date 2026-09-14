@@ -110,6 +110,8 @@ describe("published site", () => {
     expect(home).toContain(
       "Aerial view of forest, water, and cultivated land.",
     );
+    expect(home).toContain("Lasting progress.");
+    expect(home).toContain("Sustainability takes shape");
     expect(home).not.toContain("Illustrative");
     expect(home).not.toContain("Replace with");
     const work = await readPage("/work/");
@@ -118,9 +120,9 @@ describe("published site", () => {
     expect(partner).toContain("tel:+6282157245665");
     expect(partner).toContain("https://wa.me/6282157245665");
     expect(partner).not.toContain("mailto:info@bstari.org");
-    expect(indonesianHome).toContain("Masyarakat berdaya.");
+    expect(indonesianHome).toContain("Kemajuan lestari.");
     expect(indonesianHome).toContain("Bermitra dengan kami");
-    expect(indonesianPartner).toContain("Peluang jangka panjang.");
+    expect(indonesianPartner).toContain("Kemajuan yang berlanjut.");
     expect(indonesianPartner).toContain("Mulai percakapan");
     expect(indonesianPartner).toContain("tel:+6282157245665");
     expect(indonesianPartner).toContain("https://wa.me/6282157245665");

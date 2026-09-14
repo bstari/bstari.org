@@ -69,9 +69,9 @@ const localizedPath = (locale: Locale, path: string) =>
 const homeCopy = {
   en: {
     place: "From Belayan, East Kalimantan",
-    heroHeading: ["Stronger communities.", "Lasting possibilities."],
+    heroHeading: ["Lasting progress.", "For generations."],
     heroDescription:
-      "We connect local knowledge with wider opportunity, so communities can shape a prosperous, sustainable future.",
+      "BESTARI works with communities and local institutions to strengthen knowledge, livelihoods, and care for the environment so progress can continue across generations.",
     partnerCta: "Partner with us",
     workCta: "Explore our work",
     signature: "Independent social foundation",
@@ -98,15 +98,15 @@ const homeCopy = {
       },
     ],
     beliefLabel: "The belief behind BESTARI",
-    beliefHeading: ["Lasting change begins", "with people."],
+    beliefHeading: ["What lasts is", "what communities carry forward."],
     beliefDescription:
-      "Farmers, women, young people, and local institutions hold the knowledge and ambition to move their communities forward. We work alongside them to turn that potential into opportunity.",
+      "Sustainability takes shape when knowledge, livelihoods, local institutions, and natural systems grow stronger together. We work with the people who carry that progress forward.",
     beliefLink: "Get to know BESTARI",
     focusLabel: "Our focus",
-    focusHeading: "Connected by purpose.",
+    focusHeading: "Built to last.",
     focusSummary: [
       "Four areas of work.",
-      "One commitment to stronger communities.",
+      "One commitment to lasting progress.",
     ],
     focusCards: [
       {
@@ -134,17 +134,17 @@ const homeCopy = {
         description: "Local experience. Shared understanding.",
       },
     ],
-    calloutLabel: "A shared investment in the future",
-    calloutHeading: ["Local roots.", "Wider possibilities."],
+    calloutLabel: "An investment in what lasts",
+    calloutHeading: ["Local strength.", "Lasting progress."],
     calloutDescription:
-      "Bring your knowledge, resources, and networks. Together, we can build opportunities that communities carry forward.",
+      "Bring your knowledge, resources, and networks. Together, we can strengthen the systems that allow communities to carry progress forward.",
     calloutCta: "Let’s build a partnership",
   },
   id: {
     place: "Berakar di Belayan, Kalimantan Timur",
-    heroHeading: ["Masyarakat berdaya.", "Masa depan yang lebih luas."],
+    heroHeading: ["Kemajuan lestari.", "Lintas generasi."],
     heroDescription:
-      "Kami mempertemukan pengetahuan lokal dengan peluang yang lebih luas, agar masyarakat dapat membangun masa depan yang sejahtera dan berkelanjutan.",
+      "BESTARI bekerja bersama masyarakat dan lembaga lokal untuk memperkuat pengetahuan, penghidupan, dan kepedulian terhadap lingkungan agar kemajuan dapat berlanjut lintas generasi.",
     partnerCta: "Bermitra dengan kami",
     workCta: "Jelajahi karya kami",
     signature: "Yayasan sosial independen",
@@ -171,15 +171,15 @@ const homeCopy = {
       },
     ],
     beliefLabel: "Gagasan di balik BESTARI",
-    beliefHeading: ["Perubahan yang bermakna", "dimulai dari masyarakat."],
+    beliefHeading: ["Yang lestari adalah", "yang dapat diteruskan."],
     beliefDescription:
-      "Petani, perempuan, generasi muda, dan lembaga lokal memiliki pengetahuan, pengalaman, dan tekad untuk memajukan masyarakatnya. Kami bekerja bersama mereka untuk mengubah potensi menjadi peluang.",
+      "Keberlanjutan tumbuh ketika pengetahuan, penghidupan, kelembagaan lokal, dan lingkungan diperkuat bersama. Kami bekerja dengan masyarakat agar kemajuan itu dapat terus berjalan.",
     beliefLink: "Kenali BESTARI",
     focusLabel: "Bidang kerja kami",
-    focusHeading: "Terhubung oleh tujuan.",
+    focusHeading: "Dibangun untuk berlanjut.",
     focusSummary: [
       "Empat bidang kerja.",
-      "Satu komitmen untuk masyarakat yang lebih kuat.",
+      "Satu komitmen untuk kemajuan yang bertahan.",
     ],
     focusCards: [
       {
@@ -207,10 +207,10 @@ const homeCopy = {
         description: "Pengalaman lokal. Pemahaman bersama.",
       },
     ],
-    calloutLabel: "Investasi bersama untuk masa depan",
-    calloutHeading: ["Akar lokal.", "Peluang yang lebih luas."],
+    calloutLabel: "Investasi untuk masa depan yang lestari",
+    calloutHeading: ["Kekuatan lokal.", "Kemajuan yang lestari."],
     calloutDescription:
-      "Satukan pengetahuan, sumber daya, dan jejaring Anda. Bersama, kita dapat membangun peluang yang terus tumbuh dan menjadi milik masyarakat.",
+      "Satukan pengetahuan, sumber daya, dan jejaring Anda. Bersama, kita dapat memperkuat sistem yang memungkinkan masyarakat meneruskan kemajuan.",
     calloutCta: "Mari bangun kemitraan",
   },
 } as const;
@@ -334,7 +334,7 @@ const aboutCopy = {
       "Our responsibility",
       "spans generations.",
     ],
-    lead: "Belayan Sejahtera Lestari is an independent social foundation based in Muai Village, East Kalimantan. We believe sustainable development begins with people.",
+    lead: "Belayan Sejahtera Lestari is an independent social foundation in Muai Village, East Kalimantan. We work to make development last by strengthening communities, local institutions, livelihoods, and the environment.",
     storyHeading: ["Born from experience.", "Built for what comes next."],
     storyCaption: "Community gathering beneath a wooden village house.",
     storyAlt:
@@ -346,7 +346,7 @@ const aboutCopy = {
     ],
     visionLabel: "Our vision",
     vision:
-      "Thriving communities with the knowledge, opportunity, and capacity to build a prosperous and sustainable future.",
+      "A prosperous, sustainable future carried forward by capable communities and institutions.",
     guidesLabel: "What guides us",
     guidesHeading: ["A name.", "A commitment."],
     principles: [
@@ -374,7 +374,7 @@ const aboutCopy = {
       "Tanggung jawab kami",
       "melintasi generasi.",
     ],
-    lead: "Belayan Sejahtera Lestari adalah yayasan sosial independen yang berakar di Desa Muai, Kalimantan Timur. Kami percaya pembangunan berkelanjutan dimulai dari masyarakat.",
+    lead: "Belayan Sejahtera Lestari adalah yayasan sosial independen di Desa Muai, Kalimantan Timur. Kami bekerja agar pembangunan dapat terus berlanjut dengan memperkuat masyarakat, kelembagaan lokal, penghidupan, dan lingkungan.",
     storyHeading: ["Lahir dari pengalaman.", "Dibangun untuk masa depan."],
     storyCaption: "Pertemuan warga di bawah rumah panggung.",
     storyAlt:
@@ -386,7 +386,7 @@ const aboutCopy = {
     ],
     visionLabel: "Visi kami",
     vision:
-      "Masyarakat yang sejahtera dan tangguh, dengan pengetahuan, peluang, dan kapasitas untuk membangun masa depan yang berkelanjutan.",
+      "Masa depan yang sejahtera dan berkelanjutan, diteruskan oleh masyarakat dan lembaga yang berdaya.",
     guidesLabel: "Makna di balik nama kami",
     guidesHeading: ["Sebuah nama.", "Sebuah komitmen."],
     principles: [
@@ -494,9 +494,9 @@ const pillars = [
   {
     id: "education",
     title: "Education & human development",
-    line: "Knowledge creates choices.",
+    line: "Knowledge carries progress forward.",
     description:
-      "Practical, accessible learning that strengthens people’s ability to make decisions, lead, and create new possibilities.",
+      "Practical, accessible learning that strengthens the knowledge and leadership communities need to carry progress forward.",
     topics:
       "Community education · Financial literacy · Leadership · Vocational skills",
     photo: "training-learning",
@@ -508,7 +508,7 @@ const pillars = [
     title: "Community economy & sustainable livelihoods",
     line: "Opportunity that grows from within.",
     description:
-      "Supporting smallholder farmers, women, young people, and local enterprises to build the skills and institutions for economic independence.",
+      "Supporting smallholder farmers, women, young people, and local enterprises to build the skills and institutions that sustain economic independence.",
     topics:
       "Enterprise development · Financial management · Market access · Institutional capacity",
     photo: "training-livelihoods",
@@ -530,7 +530,7 @@ const pillars = [
   {
     id: "knowledge",
     title: "Research, knowledge & local culture",
-    line: "Local experience deserves to be heard.",
+    line: "Local knowledge for lasting progress.",
     description:
       "Documenting community knowledge and connecting it with research, data, technology, and wider networks so local experience can inform broader change.",
     topics: "Research · Documentation · Knowledge exchange · Local culture",
@@ -545,9 +545,9 @@ const indonesianPillars = [
   {
     id: "education",
     title: "Pendidikan & pengembangan manusia",
-    line: "Pengetahuan membuka pilihan.",
+    line: "Pengetahuan meneruskan kemajuan.",
     description:
-      "Pembelajaran praktis dan mudah diakses untuk memperkuat kemampuan masyarakat dalam mengambil keputusan, memimpin, dan membuka peluang baru.",
+      "Pembelajaran praktis dan mudah diakses untuk memperkuat pengetahuan serta kepemimpinan yang dibutuhkan masyarakat agar kemajuan dapat terus berlanjut.",
     topics:
       "Pendidikan masyarakat · Literasi keuangan · Kepemimpinan · Keterampilan kerja",
     photo: "training-learning",
@@ -559,7 +559,7 @@ const indonesianPillars = [
     title: "Ekonomi masyarakat & penghidupan berkelanjutan",
     line: "Peluang yang tumbuh dari dalam.",
     description:
-      "Mendukung petani kecil, perempuan, generasi muda, dan usaha lokal untuk membangun keterampilan serta kelembagaan yang memperkuat kemandirian ekonomi.",
+      "Mendukung petani kecil, perempuan, generasi muda, dan usaha lokal untuk membangun keterampilan serta kelembagaan yang menjaga kemandirian ekonomi.",
     topics:
       "Pengembangan usaha · Manajemen keuangan · Akses pasar · Penguatan kelembagaan",
     photo: "training-livelihoods",
@@ -581,7 +581,7 @@ const indonesianPillars = [
   {
     id: "knowledge",
     title: "Riset, pengetahuan & budaya lokal",
-    line: "Pengalaman lokal layak didengar.",
+    line: "Pengetahuan lokal untuk kemajuan yang berlanjut.",
     description:
       "Mendokumentasikan pengetahuan masyarakat dan menghubungkannya dengan riset, data, teknologi, serta jejaring yang lebih luas agar pengalaman lokal dapat memperkaya praktik pembangunan di berbagai tempat.",
     topics: "Riset · Dokumentasi · Pertukaran pengetahuan · Budaya lokal",
@@ -596,7 +596,7 @@ const workCopy = {
   en: {
     sectionLabel: "Our work",
     heading: ["Different starting points.", "A shared future."],
-    lead: "Our four strategic pillars connect learning, livelihoods, the environment, and local knowledge. Each begins with the people who know their communities best.",
+    lead: "Our four strategic pillars create the conditions for progress that lasts: stronger learning, livelihoods, environments, and local knowledge.",
     jumpLabel: "Focus areas",
     jumpLinks: ["Learning", "Livelihoods", "Environment", "Knowledge"],
     detailLabel: "Explore the focus areas",
@@ -604,13 +604,13 @@ const workCopy = {
     portfolioHeading: "Stories from the field.",
     portfolioDescription:
       "We are preparing our project documentation for publication. This page currently presents our strategic focus; individual project stories and results will be shared as they are documented.",
-    ctaHeading: "See a shared priority?",
+    ctaHeading: "Build what lasts together.",
     ctaLabel: "Explore a partnership",
   },
   id: {
     sectionLabel: "Bidang kerja kami",
     heading: ["Beragam titik awal.", "Masa depan bersama."],
-    lead: "Empat pilar strategis kami menghubungkan pembelajaran, penghidupan, lingkungan, dan pengetahuan lokal. Setiap pilar dimulai dari masyarakat yang paling memahami konteksnya.",
+    lead: "Empat pilar strategis kami membangun dasar bagi kemajuan yang berlanjut: pembelajaran, penghidupan, lingkungan, dan pengetahuan lokal yang lebih kuat.",
     jumpLabel: "Bidang fokus",
     jumpLinks: ["Pembelajaran", "Penghidupan", "Lingkungan", "Pengetahuan"],
     detailLabel: "Lihat bidang fokus",
@@ -618,7 +618,7 @@ const workCopy = {
     portfolioHeading: "Cerita dari lapangan.",
     portfolioDescription:
       "Kami sedang menyiapkan dokumentasi proyek untuk dipublikasikan. Untuk saat ini, halaman ini menyajikan fokus strategis kami; cerita proyek dan hasilnya akan kami bagikan setelah terdokumentasi.",
-    ctaHeading: "Menemukan prioritas bersama?",
+    ctaHeading: "Mari membangun yang berlanjut.",
     ctaLabel: "Jelajahi kemitraan",
   },
 } as const;
@@ -704,11 +704,11 @@ export function WorkPage({ locale = "en" }: PageProps) {
 const partnerCopy = {
   en: {
     sectionLabel: "Partner with BESTARI",
-    heading: ["Shared purpose.", "Lasting possibility."],
-    lead: "Meaningful partnership brings together resources, knowledge, networks, and trust. Let’s connect your priorities with the strengths of Belayan’s communities.",
+    heading: ["Shared purpose.", "Lasting progress."],
+    lead: "Meaningful partnership turns resources, knowledge, networks, and trust into progress that communities and institutions can sustain. Let’s connect your priorities with the strengths of Belayan.",
     startCta: "Start a conversation",
     workingLabel: "Working together",
-    workingHeading: ["Community at the center.", "From the beginning."],
+    workingHeading: ["Built for continuity.", "From the beginning."],
     principles: [
       {
         summary: "Listen before we design",
@@ -733,7 +733,7 @@ const partnerCopy = {
     contactLabel: "Begin a partnership",
     contactHeading: ["What could we", "build together?"],
     contactDescription:
-      "Tell us about your priorities, the communities you hope to work with, and the knowledge or resources you would like to contribute.",
+      "Tell us about your priorities, the lasting outcome you want to support, and the knowledge or resources you would like to contribute.",
     contactTitle: "Let’s start a conversation.",
     messagePrompt: "Prefer messaging?",
     whatsappLabel: "WhatsApp our team",
@@ -743,11 +743,11 @@ const partnerCopy = {
   },
   id: {
     sectionLabel: "Bermitra dengan BESTARI",
-    heading: ["Tujuan bersama.", "Peluang jangka panjang."],
-    lead: "Kemitraan yang bermakna mempertemukan sumber daya, pengetahuan, jejaring, dan kepercayaan. Mari hubungkan prioritas Anda dengan kekuatan masyarakat Belayan.",
+    heading: ["Tujuan bersama.", "Kemajuan yang berlanjut."],
+    lead: "Kemitraan yang bermakna mengubah sumber daya, pengetahuan, jejaring, dan kepercayaan menjadi kemajuan yang dapat dijaga oleh masyarakat dan lembaga. Mari hubungkan prioritas Anda dengan kekuatan Belayan.",
     startCta: "Mulai percakapan",
     workingLabel: "Bekerja bersama",
-    workingHeading: ["Masyarakat sebagai pusat.", "Sejak awal."],
+    workingHeading: ["Dibangun untuk berlanjut.", "Sejak awal."],
     principles: [
       {
         summary: "Dengarkan sebelum merancang",
@@ -772,7 +772,7 @@ const partnerCopy = {
     contactLabel: "Mulai kemitraan",
     contactHeading: ["Apa yang dapat", "kita bangun bersama?"],
     contactDescription:
-      "Ceritakan prioritas Anda, masyarakat yang ingin Anda dampingi, serta pengetahuan atau sumber daya yang ingin Anda kontribusikan.",
+      "Ceritakan prioritas Anda, hasil jangka panjang yang ingin Anda dukung, serta pengetahuan atau sumber daya yang ingin Anda kontribusikan.",
     contactTitle: "Mari memulai percakapan.",
     messagePrompt: "Lebih nyaman berkirim pesan?",
     whatsappLabel: "Hubungi tim kami di WhatsApp",
