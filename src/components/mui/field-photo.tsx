@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import { useEffect, useState } from "react";
 import { colors } from "./theme";
 
 const Figure = styled("figure", {
@@ -121,29 +122,40 @@ export interface VideoItem {
 interface VideoProps {
   name: string;
   posterAlt: string;
-  video: VideoItem;
+  videos: readonly VideoItem[];
   hero?: boolean;
 }
 
 export function FieldVideo({
   name,
   posterAlt,
-  video,
+  videos,
   hero = false,
 }: VideoProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
+  const video = videos[activeIndex] ?? videos[0];
   const captionId = `${name}-video-caption`;
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setVideoReady(true), 800);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  if (!video) return null;
 
   return (
     <Figure hero={hero}>
       <HeroVideo
-        autoPlay
+        key={`${video.src}-${videoReady ? "loaded" : "poster"}`}
+        autoPlay={videoReady}
         muted
-        loop
         playsInline
-        preload="metadata"
+        preload={videoReady ? "auto" : "none"}
         poster={`/photos/${name}.jpg`}
         aria-label={`${video.title}: ${video.alt}`}
         aria-describedby={captionId}
+        onEnded={() => setActiveIndex((index) => (index + 1) % videos.length)}
       >
         <source src={`/videos/${video.src}.mp4`} type="video/mp4" />
         <track

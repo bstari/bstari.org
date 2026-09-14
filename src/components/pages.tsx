@@ -77,15 +77,26 @@ const homeCopy = {
     signature: "Independent social foundation",
     heroAlt:
       "Farmers and volunteers carry young tree seedlings across a cultivated field.",
-    video: {
-      src: "belayan",
-      title: "Belayan River",
-      alt: "Aerial video follows the Belayan River as it winds through forest and cultivated land.",
-      caption: "Aerial view of forest, water, and cultivated land.",
-      trackSrc: "/videos/belayan-en.vtt",
-      trackLang: "en",
-      trackLabel: "English captions",
-    },
+    videos: [
+      {
+        src: "belayan",
+        title: "Belayan River",
+        alt: "Aerial video follows the Belayan River as it winds through forest and cultivated land.",
+        caption: "Aerial view of forest, water, and cultivated land.",
+        trackSrc: "/videos/belayan-en.vtt",
+        trackLang: "en",
+        trackLabel: "English captions",
+      },
+      {
+        src: "muai",
+        title: "Muai Village",
+        alt: "Aerial video surveys Muai Village, its homes, roads, and surrounding greenery.",
+        caption: "Aerial view of homes, roads, and surrounding greenery.",
+        trackSrc: "/videos/muai-en.vtt",
+        trackLang: "en",
+        trackLabel: "English captions",
+      },
+    ],
     beliefLabel: "The belief behind BESTARI",
     beliefHeading: ["Lasting change begins", "with people."],
     beliefDescription:
@@ -139,15 +150,26 @@ const homeCopy = {
     signature: "Yayasan sosial independen",
     heroAlt:
       "Petani dan relawan membawa bibit pohon muda melintasi lahan budidaya.",
-    video: {
-      src: "belayan",
-      title: "Sungai Belayan",
-      alt: "Video udara mengikuti alur Sungai Belayan yang membelah hutan dan lahan budidaya.",
-      caption: "Hutan, aliran air, dan lahan budidaya dari udara.",
-      trackSrc: "/videos/belayan-id.vtt",
-      trackLang: "id",
-      trackLabel: "Takarir Bahasa Indonesia",
-    },
+    videos: [
+      {
+        src: "belayan",
+        title: "Sungai Belayan",
+        alt: "Video udara mengikuti alur Sungai Belayan yang membelah hutan dan lahan budidaya.",
+        caption: "Hutan, aliran air, dan lahan budidaya dari udara.",
+        trackSrc: "/videos/belayan-id.vtt",
+        trackLang: "id",
+        trackLabel: "Takarir Bahasa Indonesia",
+      },
+      {
+        src: "muai",
+        title: "Desa Muai",
+        alt: "Video udara meninjau Desa Muai, rumah, jalan, dan pepohonan di sekitarnya.",
+        caption: "Rumah, jalan, dan pepohonan di sekitar desa dari udara.",
+        trackSrc: "/videos/muai-id.vtt",
+        trackLang: "id",
+        trackLabel: "Takarir Bahasa Indonesia",
+      },
+    ],
     beliefLabel: "Gagasan di balik BESTARI",
     beliefHeading: ["Perubahan yang bermakna", "dimulai dari masyarakat."],
     beliefDescription:
@@ -229,7 +251,7 @@ export function HomePage({ locale = "en" }: PageProps) {
             name="hero-belayan"
             posterAlt={copy.heroAlt}
             hero
-            video={copy.video}
+            videos={copy.videos}
           />
         </HeroGrid>
       </Hero>
