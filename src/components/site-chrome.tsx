@@ -20,6 +20,10 @@ export const navigation = [
 
 const HeaderRoot = styled("header")({
   backgroundColor: colors.navy,
+  backgroundImage:
+    "linear-gradient(#06284fed, #06284fed), url('/photos/harvest.jpg')",
+  backgroundPosition: "center 68%",
+  backgroundSize: "cover",
   borderBottom: "1px solid #ffffff20",
   color: "#fff",
   position: "relative",
@@ -71,7 +75,7 @@ const DesktopNav = styled("nav")(({ theme }) => ({
     marginLeft: 2,
     paddingLeft: 20,
   },
-  "& .language-switch svg": { color: colors.gold, fontSize: "1rem" },
+  "& .language-switch svg": { color: colors.gold, fontSize: "1.15rem" },
   "& .language-switch a": {
     border: 0,
     color: "#d9e1e7",
@@ -106,7 +110,7 @@ const MobileLinks = styled("nav")({
     marginTop: 4,
     padding: "16px 8px 6px",
   },
-  "& .language-link svg": { color: colors.gold, fontSize: "1rem" },
+  "& .language-link svg": { color: colors.gold, fontSize: "1.2rem" },
 });
 
 const MobileNav = styled("details")(({ theme }) => ({
@@ -238,6 +242,10 @@ export function SiteHeader({ pathname, locale = "en" }: HeaderProps) {
 
 const FooterRoot = styled("footer")({
   backgroundColor: colors.navy,
+  backgroundImage:
+    "linear-gradient(#06284fe8, #06284fe8), url('/photos/harvest.jpg')",
+  backgroundPosition: "center 62%",
+  backgroundSize: "cover",
   color: "#fff",
   paddingTop: 60,
 });

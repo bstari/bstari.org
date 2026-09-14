@@ -96,7 +96,23 @@ describe("published site", () => {
     expect(home.includes('src="/photos/hero-belayan.jpg"')).toBe(
       existsSync("public/photos/hero-belayan.jpg"),
     );
-    expect(home).toContain('src="/videos/hero-river.mp4"');
+    expect(home).toContain('src="/videos/belayan.mp4"');
+    expect(home).toContain('src="/videos/belayan-en.vtt"');
+    expect(home).toMatch(/<video[^>]*autoPlay/);
+    expect(home).toMatch(/<video[^>]*loop/);
+    expect(home).not.toMatch(/<video[^>]*controls/);
+    expect(home).not.toContain("data-video-src");
+    expect(home).toContain(
+      "Farmers and volunteers carry young tree seedlings across a cultivated field.",
+    );
+    expect(home).toContain(
+      "Belayan River · Aerial view of forest, water, and cultivated land.",
+    );
+    expect(home).not.toContain("Illustrative");
+    expect(home).not.toContain("Replace with");
+    const work = await readPage("/work/");
+    expect(work.match(/src="\/photos\//g)?.length).toBe(4);
+    expect(work.match(/<figcaption\b/g)?.length).toBe(4);
     expect(partner).toContain("tel:+6282157245665");
     expect(partner).toContain("https://wa.me/6282157245665");
     expect(partner).not.toContain("mailto:info@bstari.org");

@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import { styled } from "@mui/material/styles";
 import { colors } from "./theme";
 
@@ -30,31 +29,6 @@ const PhotoImage = styled("img")({
   width: "100%",
 });
 
-const VideoOverlay = styled("video")({
-  filter: "saturate(0.82) contrast(1.04) brightness(0.86)",
-  height: "100%",
-  inset: 0,
-  objectFit: "cover",
-  position: "absolute",
-  width: "100%",
-  "@media (max-width: 759px)": { display: "none" },
-  "@media (prefers-reduced-motion: reduce)": { display: "none" },
-});
-
-const RiverArt = styled("div")(({ theme }) => ({
-  height: "100%",
-  overflow: "hidden",
-  position: "relative",
-  "& > img": {
-    height: "100%",
-    objectFit: "cover",
-    width: "100%",
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& > img": { objectPosition: "center 42%" },
-  },
-}));
-
 const Caption = styled("figcaption")({
   backgroundColor: colors.navy,
   bottom: 0,
@@ -66,12 +40,32 @@ const Caption = styled("figcaption")({
   right: 0,
 });
 
+const HeroVideo = styled("video")({
+  backgroundColor: colors.navy,
+  display: "block",
+  height: "100%",
+  objectFit: "cover",
+  width: "100%",
+});
+
+const VideoCaption = styled("figcaption")({
+  background: "linear-gradient(180deg, transparent, #06284fe8 30%)",
+  bottom: 0,
+  color: "#e4e8e8",
+  fontSize: "0.7rem",
+  left: 0,
+  padding: "44px 24px 54px",
+  pointerEvents: "none",
+  position: "absolute",
+  right: 0,
+  zIndex: 1,
+});
+
 interface Props {
   name: string;
   alt: string;
   caption?: string;
   hero?: boolean;
-  video?: string;
 }
 
 export default function FieldPhoto({
@@ -79,47 +73,69 @@ export default function FieldPhoto({
   alt,
   caption,
   hero = false,
-  video,
 }: Props) {
-  const available = existsSync(`public/photos/${name}.jpg`);
-  const videoAvailable = Boolean(
-    video && existsSync(`public/videos/${video}.mp4`),
+  return (
+    <Figure hero={hero}>
+      <PhotoImage
+        src={`/photos/${name}.jpg`}
+        alt={alt}
+        width={1600}
+        height={1200}
+        loading={hero ? "eager" : "lazy"}
+        fetchPriority={hero ? "high" : "auto"}
+      />
+      {caption && <Caption>{caption}</Caption>}
+    </Figure>
   );
+}
+
+export interface VideoItem {
+  src: string;
+  title: string;
+  alt: string;
+  caption: string;
+  trackSrc: string;
+  trackLang: "en" | "id";
+  trackLabel: string;
+}
+
+interface VideoProps {
+  name: string;
+  posterAlt: string;
+  video: VideoItem;
+  hero?: boolean;
+}
+
+export function FieldVideo({
+  name,
+  posterAlt,
+  video,
+  hero = false,
+}: VideoProps) {
+  const captionId = `${name}-video-caption`;
 
   return (
     <Figure hero={hero}>
-      {available ? (
-        <PhotoImage
-          src={`/photos/${name}.jpg`}
-          alt={alt}
-          width={1600}
-          height={1200}
-          loading={hero ? "eager" : "lazy"}
-          fetchPriority={hero ? "high" : "auto"}
+      <HeroVideo
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={`/photos/${name}.jpg`}
+        aria-label={`${video.title}: ${video.alt}`}
+        aria-describedby={captionId}
+      >
+        <source src={`/videos/${video.src}.mp4`} type="video/mp4" />
+        <track
+          kind="captions"
+          label={video.trackLabel}
+          src={video.trackSrc}
+          srcLang={video.trackLang}
         />
-      ) : (
-        <RiverArt aria-hidden="true">
-          <img src="/river-study.svg" alt="" width="800" height="1000" />
-        </RiverArt>
-      )}
-      {videoAvailable && (
-        <VideoOverlay
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={available ? `/photos/${name}.jpg` : undefined}
-          aria-hidden="true"
-        >
-          <source
-            src={`/videos/${video}.mp4`}
-            type="video/mp4"
-            media="(min-width: 760px) and (prefers-reduced-motion: no-preference)"
-          />
-        </VideoOverlay>
-      )}
-      {caption && <Caption>{caption}</Caption>}
+        <img src={`/photos/${name}.jpg`} alt={posterAlt} />
+      </HeroVideo>
+      <VideoCaption id={captionId}>{video.caption}</VideoCaption>
     </Figure>
   );
 }

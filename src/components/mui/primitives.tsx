@@ -34,11 +34,18 @@ export const SectionLabel = styled(Typography)<SemanticProps>({
 });
 
 export const SectionIcon = styled("span")({
-  color: colors.focus,
+  alignItems: "center",
+  backgroundColor: "#f1eadc",
+  border: `1px solid ${colors.focus}`,
+  borderRadius: "50%",
+  color: colors.navy,
   display: "inline-flex",
-  marginRight: 8,
-  verticalAlign: "-0.2em",
-  "& svg": { fontSize: "1rem" },
+  height: 30,
+  justifyContent: "center",
+  marginRight: 10,
+  verticalAlign: "-0.55em",
+  width: 30,
+  "& svg": { fontSize: "1.15rem" },
 });
 
 export const Heading1 = styled(Typography)<SemanticProps>({
@@ -104,7 +111,7 @@ export const TextLink = styled("a")({
   paddingBlock: 8,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.navy },
-  "& > svg": { fontSize: "1.1rem" },
+  "& > svg": { flex: "0 0 auto", fontSize: "1.25rem" },
 });
 
 interface CtaLinkProps {
@@ -130,12 +137,17 @@ export const CtaLink = styled("a", {
   "&:hover": {
     backgroundColor: gold ? "#e9dcbe" : "#153e62",
   },
-  "& > svg": { fontSize: "1.1rem" },
+  "& > svg": { flex: "0 0 auto", fontSize: "1.25rem" },
   "@media (prefers-reduced-motion: reduce)": { transition: "none" },
 }));
 
 export const Hero = styled("section")({
   backgroundColor: colors.navy,
+  backgroundImage:
+    "linear-gradient(#06284ff2, #06284ff2), url('/photos/training-agriculture.jpg')",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
   color: colors.paper,
   paddingBlock: "56px 64px",
 });
@@ -169,7 +181,7 @@ export const Place = styled(Typography)<SemanticProps>(({ theme }) => ({
   gap: 10,
   lineHeight: 1.5,
   margin: "0 0 36px",
-  "& > svg": { color: colors.gold, fontSize: "1rem" },
+  "& > svg": { color: colors.gold, flex: "0 0 auto", fontSize: "1.2rem" },
   [theme.breakpoints.down("sm")]: { marginBottom: 25 },
 }));
 
@@ -268,10 +280,17 @@ export const FocusGrid = styled(Box)<SemanticProps>(({ theme }) => ({
 }));
 
 export const FocusIcon = styled("span")({
-  color: colors.focus,
+  alignItems: "center",
+  backgroundColor: colors.paper,
+  border: `1px solid ${colors.focus}`,
+  borderRadius: "50%",
+  color: colors.navy,
   display: "inline-flex",
+  height: 38,
+  justifyContent: "center",
   marginBottom: 18,
-  "& svg": { fontSize: "1.35rem" },
+  width: 38,
+  "& svg": { fontSize: "1.45rem" },
 });
 
 export const FocusCard = styled("a")(({ theme }) => ({
@@ -287,7 +306,7 @@ export const FocusCard = styled("a")(({ theme }) => ({
     position: "absolute",
     right: 0,
     top: 36,
-    "& svg": { fontSize: "1.2rem" },
+    "& svg": { fontSize: "1.35rem" },
   },
   "&:hover h3": {
     textDecoration: "underline",
@@ -298,7 +317,7 @@ export const FocusCard = styled("a")(({ theme }) => ({
     paddingRight: 20,
     "& h3": { fontSize: "1.4rem" },
     "& p": { fontSize: "0.8rem" },
-    "& .card-arrow svg": { fontSize: "1.1rem" },
+    "& .card-arrow svg": { fontSize: "1.25rem" },
   },
 }));
 
@@ -331,6 +350,18 @@ export const PageHeading = styled(PageContainer)<SemanticProps>(
   }),
 );
 
+export const WorkHeading = styled(PageHeading)(({ theme }) => ({
+  alignItems: "end",
+  display: "grid",
+  gap: 80,
+  gridTemplateColumns: "minmax(0, 1.45fr) minmax(280px, 0.55fr)",
+  [theme.breakpoints.down("md")]: { gap: 45 },
+  [theme.breakpoints.down("sm")]: {
+    gap: 38,
+    gridTemplateColumns: "1fr",
+  },
+}));
+
 export const StoryGrid = styled(SectionBottom)<SemanticProps>(({ theme }) => ({
   alignItems: "center",
   display: "grid",
@@ -356,8 +387,8 @@ export const StoryCopy = styled(Box)<SemanticProps>({
 export const VisionBand = styled("section")(({ theme }) => ({
   backgroundColor: colors.navy,
   backgroundImage:
-    "linear-gradient(#06284ff0, #06284ff0), url('/river-study.svg')",
-  backgroundPosition: "center, right center",
+    "radial-gradient(circle at 10% 110%, #153e62 0, transparent 42%), linear-gradient(135deg, #06284f, #0b345c)",
+  backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   color: "#fff",
@@ -366,6 +397,11 @@ export const VisionBand = styled("section")(({ theme }) => ({
     backgroundImage:
       "linear-gradient(#06284fe6, #06284fe6), url('/photos/hero-belayan.jpg')",
     backgroundPosition: "center",
+  },
+  '&[data-background="work"]': {
+    backgroundImage:
+      "linear-gradient(#06284fe6, #06284fe6), url('/photos/training-livelihoods.jpg')",
+    backgroundPosition: "center 58%",
   },
   "& > div > p:first-of-type": { color: colors.gold },
   "& h2": { maxWidth: 940 },
@@ -394,7 +430,7 @@ export const Principles = styled(Box)<SemanticProps>(({ theme }) => ({
   "& summary svg": {
     color: colors.navy,
     flex: "0 0 auto",
-    fontSize: "1.2rem",
+    fontSize: "1.35rem",
     transition: "transform 0.2s",
   },
   "& details[open] summary svg": { transform: "rotate(180deg)" },
@@ -403,32 +439,56 @@ export const Principles = styled(Box)<SemanticProps>(({ theme }) => ({
 }));
 
 export const JumpLinks = styled("nav")({
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "12px 28px",
-  marginTop: 35,
+  borderBottom: `1px solid ${colors.line}`,
   "& a": {
-    borderBottom: `1px solid ${colors.line}`,
-    fontSize: "0.85rem",
-    padding: "10px 0",
-    transition: "border-color 0.2s",
+    alignItems: "center",
+    borderTop: `1px solid ${colors.line}`,
+    display: "grid",
+    fontSize: "0.9rem",
+    gap: 16,
+    gridTemplateColumns: "32px 1fr auto",
+    padding: "15px 0",
+    transition: "color 0.2s",
   },
-  "& a:hover": { borderColor: colors.navy },
+  "& a:hover": { color: colors.focus },
+  "& a span:first-of-type": {
+    color: colors.muted,
+    fontSize: "0.7rem",
+    letterSpacing: "0.08em",
+  },
+  "& svg": { fontSize: "1.2rem" },
 });
 
-export const WorkList = styled(PageContainer)<SemanticProps>({});
+export const WorkList = styled(PageContainer)<SemanticProps>(({ theme }) => ({
+  display: "grid",
+  gap: "72px 54px",
+  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+  paddingBottom: 90,
+  [theme.breakpoints.down("sm")]: {
+    gap: 52,
+    gridTemplateColumns: "1fr",
+    paddingBottom: 60,
+  },
+}));
 
 export const WorkItem = styled("section")(({ theme }) => ({
-  alignItems: "center",
   borderTop: `1px solid ${colors.line}`,
-  display: "grid",
-  gap: 70,
-  gridTemplateColumns: "1fr 1fr",
-  paddingBlock: 48,
-  "& h2": { fontSize: "2.6rem", marginBottom: 25 },
+  paddingTop: 18,
+  "& > figure": {
+    borderRadius: "14px 14px 14px 3px",
+    marginBottom: 30,
+  },
+  "&:nth-child(even) > figure": {
+    borderRadius: "14px 14px 3px 14px",
+  },
+  "& h2": { fontSize: "clamp(2.1rem, 3vw, 2.7rem)", marginBottom: 20 },
   "& p": { fontSize: "0.94rem" },
-  "& > div > p:first-child": { fontSize: "0.8rem", marginBottom: 18 },
-  "& details": { borderTop: `1px solid ${colors.line}`, paddingTop: 20 },
+  "& > div > p:first-of-type": { fontSize: "0.8rem", marginBottom: 16 },
+  "& details": {
+    borderTop: `1px solid ${colors.line}`,
+    marginTop: 25,
+    paddingTop: 18,
+  },
   "& summary": {
     alignItems: "center",
     display: "flex",
@@ -438,17 +498,13 @@ export const WorkItem = styled("section")(({ theme }) => ({
   "& summary svg": {
     color: colors.navy,
     flex: "0 0 auto",
-    fontSize: "1.15rem",
+    fontSize: "1.35rem",
     transition: "transform 0.2s",
   },
   "& details[open] summary svg": { transform: "rotate(180deg)" },
-  "&:nth-of-type(even) > figure": { order: 2 },
-  [theme.breakpoints.down("md")]: { gap: 40 },
   [theme.breakpoints.down("sm")]: {
-    gap: 28,
-    gridTemplateColumns: "1fr",
-    paddingBlock: 35,
-    "&:nth-of-type(even) > figure": { order: 0 },
+    paddingTop: 14,
+    "& > figure": { marginBottom: 25 },
     "& h2": { fontSize: "2.2rem" },
   },
 }));

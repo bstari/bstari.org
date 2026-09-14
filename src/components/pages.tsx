@@ -9,7 +9,7 @@ import PhoneRounded from "@mui/icons-material/PhoneRounded";
 import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
 import WhatsApp from "@mui/icons-material/WhatsApp";
 import Box from "@mui/material/Box";
-import FieldPhoto from "./mui/field-photo";
+import FieldPhoto, { FieldVideo } from "./mui/field-photo";
 import { MuiTheme } from "./mui/mui-theme";
 import {
   Actions,
@@ -52,6 +52,7 @@ import {
   StoryGrid,
   TextLink,
   VisionBand,
+  WorkHeading,
   WorkItem,
   WorkList,
 } from "./mui/primitives";
@@ -74,10 +75,18 @@ const homeCopy = {
     partnerCta: "Partner with us",
     workCta: "Explore our work",
     signature: "Independent social foundation",
-    heroCaption:
-      "Illustrative river landscape · Replace with a BESTARI photograph.",
     heroAlt:
-      "Lush river and rainforest landscape in East Kalimantan, Indonesia.",
+      "Farmers and volunteers carry young tree seedlings across a cultivated field.",
+    video: {
+      src: "belayan",
+      title: "Belayan River",
+      alt: "Aerial video follows the Belayan River as it winds through forest and cultivated land.",
+      caption:
+        "Belayan River · Aerial view of forest, water, and cultivated land.",
+      trackSrc: "/videos/belayan-en.vtt",
+      trackLang: "en",
+      trackLabel: "English captions",
+    },
     beliefLabel: "The belief behind BESTARI",
     beliefHeading: ["Lasting change begins", "with people."],
     beliefDescription:
@@ -129,10 +138,18 @@ const homeCopy = {
     partnerCta: "Bermitra dengan kami",
     workCta: "Jelajahi karya kami",
     signature: "Yayasan sosial independen",
-    heroCaption:
-      "Lanskap sungai sebagai ilustrasi · Ganti dengan foto BESTARI.",
     heroAlt:
-      "Lanskap sungai dan hutan hujan tropis di Kalimantan Timur, Indonesia.",
+      "Petani dan relawan membawa bibit pohon muda melintasi lahan budidaya.",
+    video: {
+      src: "belayan",
+      title: "Sungai Belayan",
+      alt: "Video udara mengikuti alur Sungai Belayan yang membelah hutan dan lahan budidaya.",
+      caption:
+        "Sungai Belayan · Hutan, aliran air, dan lahan budidaya dari udara.",
+      trackSrc: "/videos/belayan-id.vtt",
+      trackLang: "id",
+      trackLabel: "Takarir Bahasa Indonesia",
+    },
     beliefLabel: "Gagasan di balik BESTARI",
     beliefHeading: ["Perubahan yang bermakna", "dimulai dari masyarakat."],
     beliefDescription:
@@ -210,12 +227,11 @@ export function HomePage({ locale = "en" }: PageProps) {
               <span>{copy.signature}</span>
             </HeroSignature>
           </HeroCopy>
-          <FieldPhoto
+          <FieldVideo
             name="hero-belayan"
-            alt={copy.heroAlt}
+            posterAlt={copy.heroAlt}
             hero
-            caption={copy.heroCaption}
-            video="hero-river"
+            video={copy.video}
           />
         </HeroGrid>
       </Hero>
@@ -300,9 +316,9 @@ const aboutCopy = {
     ],
     lead: "Belayan Sejahtera Lestari is an independent social foundation based in Muai Village, East Kalimantan. We believe sustainable development begins with people.",
     storyHeading: ["Born from experience.", "Built for what comes next."],
-    storyCaption:
-      "Illustrative community scene · Replace with a BESTARI photograph.",
-    storyAlt: "Two women sitting together in a rural Indonesian village.",
+    storyCaption: "Community gathering beneath a wooden village house.",
+    storyAlt:
+      "Community members gather on a blue tarp beneath a wooden village house, with fields visible behind them.",
     storyParagraphs: [
       "Our story grew from years alongside farmers, workers, women, young people, and rural institutions in the Belayan River region.",
       "These roots are connected to Koperasi Belayan Sejahtera (KBS). That journey showed us that community prosperity needs more than economic opportunity alone. Learning, leadership, inclusion, and environmental stewardship need space to grow together.",
@@ -340,9 +356,9 @@ const aboutCopy = {
     ],
     lead: "Belayan Sejahtera Lestari adalah yayasan sosial independen yang berakar di Desa Muai, Kalimantan Timur. Kami percaya pembangunan berkelanjutan dimulai dari masyarakat.",
     storyHeading: ["Lahir dari pengalaman.", "Dibangun untuk masa depan."],
-    storyCaption:
-      "Suasana komunitas sebagai ilustrasi · Ganti dengan foto BESTARI.",
-    storyAlt: "Dua perempuan duduk bersama di sebuah desa di Indonesia.",
+    storyCaption: "Pertemuan warga di bawah rumah panggung.",
+    storyAlt:
+      "Warga berkumpul di atas terpal biru di bawah rumah panggung, dengan lahan terlihat di belakang.",
     storyParagraphs: [
       "Cerita kami tumbuh dari pengalaman bertahun-tahun bekerja bersama petani, pekerja, perempuan, generasi muda, dan lembaga perdesaan di wilayah Sungai Belayan.",
       "Akar ini terhubung dengan perjalanan Koperasi Belayan Sejahtera (KBS). Dari sana kami belajar bahwa kesejahteraan masyarakat membutuhkan lebih dari sekadar peluang ekonomi. Pembelajaran, kepemimpinan, inklusi, dan kepedulian terhadap lingkungan perlu ruang untuk tumbuh bersama.",
@@ -464,7 +480,8 @@ const pillars = [
     topics:
       "Community education · Financial literacy · Leadership · Vocational skills",
     photo: "training-learning",
-    alt: "Women practicing batik painting together in an Indonesian workshop.",
+    alt: "An instructor leads a classroom session while participants listen from turquoise chairs.",
+    caption: "Participants listen during a practical classroom session.",
   },
   {
     id: "livelihoods",
@@ -475,7 +492,8 @@ const pillars = [
     topics:
       "Enterprise development · Financial management · Market access · Institutional capacity",
     photo: "training-livelihoods",
-    alt: "A woman raking rice as it dries in a tropical village.",
+    alt: "Community members gather indoors around tables of food and local products.",
+    caption: "Community members share food and local products around a table.",
   },
   {
     id: "environment",
@@ -486,7 +504,8 @@ const pillars = [
     topics:
       "Sustainable agriculture · Climate resilience · Responsible land management",
     photo: "training-agriculture",
-    alt: "Farmers working in irrigated rice fields surrounded by palms.",
+    alt: "Farmers and volunteers carry young seedlings through a cultivated field.",
+    caption: "A planting team carries young seedlings across the field.",
   },
   {
     id: "knowledge",
@@ -496,7 +515,9 @@ const pillars = [
       "Documenting community knowledge and connecting it with research, data, technology, and wider networks so local experience can inform broader change.",
     topics: "Research · Documentation · Knowledge exchange · Local culture",
     photo: "community-knowledge",
-    alt: "Women sharing ideas around a table during a workshop.",
+    alt: "A small group works around tables outdoors, discussing notes and documents under the trees.",
+    caption:
+      "A field discussion brings participants together around notes and documents.",
   },
 ] as const;
 
@@ -510,7 +531,8 @@ const indonesianPillars = [
     topics:
       "Pendidikan masyarakat · Literasi keuangan · Kepemimpinan · Keterampilan kerja",
     photo: "training-learning",
-    alt: "Perempuan berlatih membatik bersama dalam sebuah lokakarya di Indonesia.",
+    alt: "Fasilitator memimpin sesi di dalam kelas sementara peserta menyimak dari kursi berwarna toska.",
+    caption: "Peserta menyimak sesi pembelajaran praktis di dalam ruangan.",
   },
   {
     id: "livelihoods",
@@ -521,7 +543,8 @@ const indonesianPillars = [
     topics:
       "Pengembangan usaha · Manajemen keuangan · Akses pasar · Penguatan kelembagaan",
     photo: "training-livelihoods",
-    alt: "Seorang perempuan meratakan gabah yang dijemur di lingkungan desa tropis.",
+    alt: "Warga berkumpul di dalam ruangan mengelilingi meja berisi hidangan dan produk lokal.",
+    caption: "Warga berbagi hidangan dan produk lokal di sekeliling meja.",
   },
   {
     id: "environment",
@@ -532,7 +555,8 @@ const indonesianPillars = [
     topics:
       "Pertanian berkelanjutan · Ketangguhan iklim · Pengelolaan lahan yang bertanggung jawab",
     photo: "training-agriculture",
-    alt: "Petani bekerja di sawah berair yang dikelilingi pepohonan palem.",
+    alt: "Petani dan relawan membawa bibit muda melintasi lahan budidaya.",
+    caption: "Tim penanaman membawa bibit muda melintasi lahan.",
   },
   {
     id: "knowledge",
@@ -542,7 +566,9 @@ const indonesianPillars = [
       "Mendokumentasikan pengetahuan masyarakat dan menghubungkannya dengan riset, data, teknologi, serta jejaring yang lebih luas agar pengalaman lokal dapat memperkaya praktik pembangunan di berbagai tempat.",
     topics: "Riset · Dokumentasi · Pertukaran pengetahuan · Budaya lokal",
     photo: "community-knowledge",
-    alt: "Perempuan berdiskusi di sekeliling meja dalam sebuah lokakarya.",
+    alt: "Kelompok kecil berdiskusi di sekitar meja di luar ruangan, membahas catatan dan dokumen di bawah pepohonan.",
+    caption:
+      "Diskusi lapangan mempertemukan warga di sekeliling catatan dan dokumen.",
   },
 ] as const;
 
@@ -584,27 +610,35 @@ export function WorkPage({ locale = "en" }: PageProps) {
 
   return (
     <MuiTheme>
-      <PageHeading component="section">
-        <SectionLabel component="p">{copy.sectionLabel}</SectionLabel>
-        <Heading1 component="h1">
-          {copy.heading[0]}
-          <br />
-          {copy.heading[1]}
-        </Heading1>
-        <Lead component="p">{copy.lead}</Lead>
+      <WorkHeading component="section">
+        <Box>
+          <SectionLabel component="p">{copy.sectionLabel}</SectionLabel>
+          <Heading1 component="h1">
+            {copy.heading[0]}
+            <br />
+            {copy.heading[1]}
+          </Heading1>
+          <Lead component="p">{copy.lead}</Lead>
+        </Box>
         <JumpLinks aria-label={copy.jumpLabel}>
           {copy.jumpLinks.map((label, index) => (
             <a href={`#${localizedPillars[index].id}`} key={label}>
-              {label}
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span>{label}</span>
+              {arrow}
             </a>
           ))}
         </JumpLinks>
-      </PageHeading>
+      </WorkHeading>
 
       <WorkList>
         {localizedPillars.map((pillar) => (
           <WorkItem id={pillar.id} key={pillar.id}>
-            <FieldPhoto name={pillar.photo} alt={pillar.alt} />
+            <FieldPhoto
+              name={pillar.photo}
+              alt={pillar.alt}
+              caption={pillar.caption}
+            />
             <Box>
               <SectionLabel component="p">
                 <SectionIcon aria-hidden="true">
@@ -635,7 +669,7 @@ export function WorkPage({ locale = "en" }: PageProps) {
         <BodyText component="p">{copy.portfolioDescription}</BodyText>
       </PortfolioNote>
 
-      <VisionBand>
+      <VisionBand data-background="work">
         <CompactCta>
           <Heading2 component="h2">{copy.ctaHeading}</Heading2>
           <CtaLink href={link("/partner/")} gold>
