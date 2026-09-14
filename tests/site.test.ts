@@ -106,7 +106,7 @@ describe("published site", () => {
       "Farmers and volunteers carry young tree seedlings across a cultivated field.",
     );
     expect(home).toContain(
-      "Belayan River · Aerial view of forest, water, and cultivated land.",
+      "Aerial view of forest, water, and cultivated land.",
     );
     expect(home).not.toContain("Illustrative");
     expect(home).not.toContain("Replace with");

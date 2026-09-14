@@ -81,8 +81,7 @@ const homeCopy = {
       src: "belayan",
       title: "Belayan River",
       alt: "Aerial video follows the Belayan River as it winds through forest and cultivated land.",
-      caption:
-        "Belayan River · Aerial view of forest, water, and cultivated land.",
+      caption: "Aerial view of forest, water, and cultivated land.",
       trackSrc: "/videos/belayan-en.vtt",
       trackLang: "en",
       trackLabel: "English captions",
@@ -144,8 +143,7 @@ const homeCopy = {
       src: "belayan",
       title: "Sungai Belayan",
       alt: "Video udara mengikuti alur Sungai Belayan yang membelah hutan dan lahan budidaya.",
-      caption:
-        "Sungai Belayan · Hutan, aliran air, dan lahan budidaya dari udara.",
+      caption: "Hutan, aliran air, dan lahan budidaya dari udara.",
       trackSrc: "/videos/belayan-id.vtt",
       trackLang: "id",
       trackLabel: "Takarir Bahasa Indonesia",

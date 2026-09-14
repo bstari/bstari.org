@@ -29,15 +29,47 @@ const PhotoImage = styled("img")({
   width: "100%",
 });
 
-const Caption = styled("figcaption")({
-  backgroundColor: colors.navy,
+const MediaCaption = styled("figcaption")(({ theme }) => ({
+  alignItems: "flex-start",
+  background:
+    "linear-gradient(180deg, #06284f00 0%, #06284fc2 48%, #06284ff5 100%)",
   bottom: 0,
-  color: "#e4e8e8",
-  fontSize: "0.7rem",
+  color: "#f4f6f3",
+  display: "flex",
+  fontSize: "0.78rem",
+  gap: 12,
   left: 0,
-  padding: "18px 24px",
+  lineHeight: 1.5,
+  padding: "58px 24px 20px",
+  pointerEvents: "none",
   position: "absolute",
   right: 0,
+  "&::before": {
+    backgroundColor: colors.gold,
+    content: '""',
+    flex: "0 0 18px",
+    height: 1,
+    marginTop: "0.7em",
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.74rem",
+    gap: 10,
+    padding: "48px 16px 16px",
+  },
+}));
+
+const CaptionBody = styled("span")({
+  display: "grid",
+  gap: 3,
+});
+
+const VideoTitle = styled("strong")({
+  color: "#fff",
+  fontFamily: '"Source Serif 4", Georgia, "Times New Roman", serif',
+  fontSize: "0.98rem",
+  fontWeight: 400,
+  letterSpacing: "-0.01em",
+  lineHeight: 1.2,
 });
 
 const HeroVideo = styled("video")({
@@ -46,19 +78,6 @@ const HeroVideo = styled("video")({
   height: "100%",
   objectFit: "cover",
   width: "100%",
-});
-
-const VideoCaption = styled("figcaption")({
-  background: "linear-gradient(180deg, transparent, #06284fe8 30%)",
-  bottom: 0,
-  color: "#e4e8e8",
-  fontSize: "0.7rem",
-  left: 0,
-  padding: "44px 24px 54px",
-  pointerEvents: "none",
-  position: "absolute",
-  right: 0,
-  zIndex: 1,
 });
 
 interface Props {
@@ -84,7 +103,7 @@ export default function FieldPhoto({
         loading={hero ? "eager" : "lazy"}
         fetchPriority={hero ? "high" : "auto"}
       />
-      {caption && <Caption>{caption}</Caption>}
+      {caption && <MediaCaption>{caption}</MediaCaption>}
     </Figure>
   );
 }
@@ -135,7 +154,12 @@ export function FieldVideo({
         />
         <img src={`/photos/${name}.jpg`} alt={posterAlt} />
       </HeroVideo>
-      <VideoCaption id={captionId}>{video.caption}</VideoCaption>
+      <MediaCaption id={captionId}>
+        <CaptionBody>
+          <VideoTitle>{video.title}</VideoTitle>
+          <span>{video.caption}</span>
+        </CaptionBody>
+      </MediaCaption>
     </Figure>
   );
 }
