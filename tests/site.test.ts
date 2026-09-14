@@ -97,7 +97,17 @@ describe("published site", () => {
       existsSync("public/photos/hero-belayan.jpg"),
     );
     expect(existsSync("public/videos/muai.mp4")).toBe(true);
+    for (const track of [
+      "public/videos/belayan-en.vtt",
+      "public/videos/belayan-id.vtt",
+      "public/videos/muai-en.vtt",
+      "public/videos/muai-id.vtt",
+    ]) {
+      expect(existsSync(track)).toBe(false);
+    }
     expect(home).toMatch(/<video\b/);
+    expect(home).not.toMatch(/<track\b/);
+    expect(home).not.toContain(".vtt");
     expect(home).toContain('preload="none"');
     expect(home).toContain('poster="/photos/hero-belayan.jpg"');
     expect(home).not.toContain('src="/videos/belayan.mp4"');

@@ -134,9 +134,6 @@ export interface VideoItem {
   title: string;
   alt: string;
   caption: string;
-  trackSrc: string;
-  trackLang: "en" | "id";
-  trackLabel: string;
 }
 
 interface VideoProps {
@@ -261,15 +258,7 @@ export function FieldVideo({
         onEnded={handleEnded}
       >
         {videoReady && (
-          <>
-            <source src={`/videos/${video.src}.mp4`} type="video/mp4" />
-            <track
-              kind="captions"
-              label={video.trackLabel}
-              src={video.trackSrc}
-              srcLang={video.trackLang}
-            />
-          </>
+          <source src={`/videos/${video.src}.mp4`} type="video/mp4" />
         )}
       </HeroVideo>
       {nextRequested && nextVideo && (
@@ -286,12 +275,6 @@ export function FieldVideo({
           onCanPlay={handleNextCanPlay}
         >
           <source src={`/videos/${nextVideo.src}.mp4`} type="video/mp4" />
-          <track
-            kind="captions"
-            label={nextVideo.trackLabel}
-            src={nextVideo.trackSrc}
-            srcLang={nextVideo.trackLang}
-          />
         </HeroVideo>
       )}
       <MediaCaption id={captionId}>
