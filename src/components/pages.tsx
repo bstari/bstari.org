@@ -66,9 +66,9 @@ const localizedPath = (locale: Locale, path: string) =>
 
 const homeCopy = {
   en: {
-    heroHeading: ["Lasting progress.", "For generations."],
+    heroHeading: ["Continue the", "Sustainability"],
     heroDescription:
-      "BESTARI works with communities and local institutions to strengthen knowledge, livelihoods, and care for the environment so progress can continue across generations.",
+      "Your partnership with BESTARI strengthens the knowledge, livelihoods, local institutions, and environmental stewardship that allow communities in East Kalimantan to carry progress forward across generations.",
     partnerCta: "Partner with us",
     workCta: "Explore our work",
     signature: "Independent social foundation",
@@ -132,9 +132,9 @@ const homeCopy = {
     calloutCta: "Let’s build a partnership",
   },
   id: {
-    heroHeading: ["Kemajuan lestari.", "Lintas generasi."],
+    heroHeading: ["Melanjutkan", "keberlanjutan."],
     heroDescription:
-      "BESTARI bekerja bersama masyarakat dan lembaga lokal untuk memperkuat pengetahuan, penghidupan, dan kepedulian terhadap lingkungan agar kemajuan dapat berlanjut lintas generasi.",
+      "Kemitraan Anda dengan BESTARI memperkuat pengetahuan, penghidupan, kelembagaan lokal, dan kepedulian terhadap lingkungan agar masyarakat di Kalimantan Timur dapat meneruskan kemajuan lintas generasi.",
     partnerCta: "Bermitra dengan kami",
     workCta: "Jelajahi karya kami",
     signature: "Yayasan sosial independen",

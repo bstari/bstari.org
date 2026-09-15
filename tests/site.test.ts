@@ -120,7 +120,8 @@ describe("published site", () => {
     expect(home).toContain(
       "Aerial view of forest, water, and cultivated land.",
     );
-    expect(home).toContain("Lasting progress.");
+    expect(home).toContain("Continue the");
+    expect(home).toContain("Sustainability");
     expect(home).toContain("Sustainability takes shape");
     expect(home).not.toContain("From Belayan, East Kalimantan");
     expect(home).not.toContain("Illustrative");
@@ -131,7 +132,8 @@ describe("published site", () => {
     expect(partner).toContain("tel:+6282157245665");
     expect(partner).toContain("https://wa.me/6282157245665");
     expect(partner).not.toContain("mailto:info@bstari.org");
-    expect(indonesianHome).toContain("Kemajuan lestari.");
+    expect(indonesianHome).toContain("Melanjutkan");
+    expect(indonesianHome).toContain("keberlanjutan.");
     expect(indonesianHome).not.toContain(
       "Berakar di Belayan, Kalimantan Timur",
     );
