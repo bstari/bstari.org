@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { type SyntheticEvent, useEffect, useRef, useState } from "react";
 import { colors } from "./theme";
 
@@ -101,6 +102,22 @@ const HeroVideo = styled("video", {
   "@media (prefers-reduced-motion: reduce)": { transition: "none" },
 }));
 
+const PlaybackButton = styled("button")({
+  backgroundColor: colors.navy,
+  border: `1px solid ${colors.gold}`,
+  borderRadius: 2,
+  color: "#fff",
+  cursor: "pointer",
+  font: "inherit",
+  fontSize: "0.8rem",
+  minHeight: 44,
+  padding: "10px 14px",
+  position: "absolute",
+  right: 16,
+  top: 16,
+  zIndex: 4,
+});
+
 interface Props {
   name: string;
   alt: string;
@@ -140,6 +157,8 @@ interface VideoProps {
   name: string;
   posterAlt: string;
   videos: readonly VideoItem[];
+  pauseLabel: string;
+  resumeLabel: string;
   hero?: boolean;
 }
 
@@ -149,12 +168,25 @@ const MEDIA_FADE = 900;
 const NEXT_PRELOAD_LEAD = 5;
 const CROSSFADE_LEAD = 1.1;
 
-export function FieldVideo({
+export function FieldVideo(props: VideoProps) {
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+
+  return reducedMotion ? (
+    <FieldPhoto name={props.name} alt={props.posterAlt} hero={props.hero} />
+  ) : (
+    <VideoPlayback {...props} />
+  );
+}
+
+function VideoPlayback({
   name,
   posterAlt,
   videos,
+  pauseLabel,
+  resumeLabel,
   hero = false,
 }: VideoProps) {
+  const [paused, setPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [videoReady, setVideoReady] = useState(false);
   const [videoPlayable, setVideoPlayable] = useState(false);
@@ -185,23 +217,47 @@ export function FieldVideo({
     };
   }, []);
 
-  if (!video) return null;
+  useEffect(() => {
+    if (!crossfading || paused) return;
 
-  const videoVisible = videoReady && videoPlayable && posterHoldComplete;
-  const beginCrossfade = (allowUnready = false) => {
-    if (crossfading || (!nextPlayable && !allowUnready) || !nextVideo) {
-      return;
-    }
-
-    setPosterReleased(true);
-    setCrossfading(true);
-    nextVideoRef.current?.play().catch(() => undefined);
-    window.setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setActiveIndex((index) => (index + 1) % videos.length);
       setCrossfading(false);
       setNextRequested(false);
       setNextPlayable(false);
     }, MEDIA_FADE);
+    return () => window.clearTimeout(timer);
+  }, [crossfading, paused, videos.length]);
+
+  useEffect(() => {
+    for (const media of [currentVideoRef.current, nextVideoRef.current]) {
+      if (!media) continue;
+      if (paused) {
+        media.pause();
+      } else if (
+        videoReady &&
+        (media === currentVideoRef.current || crossfading)
+      ) {
+        media.play().catch(() => setPaused(true));
+      }
+    }
+  }, [paused, videoReady, crossfading]);
+
+  if (!video) return null;
+
+  const videoVisible = videoReady && videoPlayable && posterHoldComplete;
+  const beginCrossfade = (allowUnready = false) => {
+    if (
+      paused ||
+      crossfading ||
+      (!nextPlayable && !allowUnready) ||
+      !nextVideo
+    ) {
+      return;
+    }
+
+    setPosterReleased(true);
+    setCrossfading(true);
   };
   const handleTimeUpdate = (event: SyntheticEvent<HTMLVideoElement>) => {
     const current = event.currentTarget;
@@ -244,7 +300,7 @@ export function FieldVideo({
       <HeroVideo
         key={`${video.src}-${videoReady ? "loaded" : "poster"}`}
         ref={currentVideoRef}
-        autoPlay={videoReady}
+        autoPlay={videoReady && !paused}
         muted
         playsInline
         preload={videoReady ? "auto" : "none"}
@@ -283,6 +339,11 @@ export function FieldVideo({
           <span>{video.caption}</span>
         </CaptionBody>
       </MediaCaption>
+      {videoVisible && (
+        <PlaybackButton type="button" onClick={() => setPaused(!paused)}>
+          {paused ? resumeLabel : pauseLabel}
+        </PlaybackButton>
+      )}
     </Figure>
   );
 }

@@ -15,8 +15,8 @@ const globalStyles = {
   },
   a: { color: "inherit", textDecoration: "none" },
   "button, summary, a": { WebkitTapHighlightColor: "transparent" },
-  "a, summary": { touchAction: "manipulation" },
-  "a:focus-visible, summary:focus-visible": {
+  "a, summary, button": { touchAction: "manipulation" },
+  "a:focus-visible, summary:focus-visible, button:focus-visible": {
     outline: `3px solid ${colors.focus}`,
     outlineOffset: 6,
   },
@@ -34,6 +34,7 @@ const globalStyles = {
     top: -100,
     zIndex: 100,
     padding: 12,
+    minHeight: 44,
     backgroundColor: "#fff",
   },
   ".skip-link:focus": { top: 10 },

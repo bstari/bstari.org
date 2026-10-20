@@ -74,6 +74,8 @@ const homeCopy = {
     signature: "Independent social foundation",
     heroAlt:
       "Farmers and volunteers carry young tree seedlings across a cultivated field.",
+    pauseVideo: "Pause video",
+    resumeVideo: "Resume video",
     videos: [
       {
         src: "belayan",
@@ -140,6 +142,8 @@ const homeCopy = {
     signature: "Yayasan sosial independen",
     heroAlt:
       "Petani dan relawan membawa bibit pohon muda melintasi lahan budidaya.",
+    pauseVideo: "Jeda video",
+    resumeVideo: "Lanjutkan video",
     videos: [
       {
         src: "belayan",
@@ -218,7 +222,7 @@ export function HomePage({ locale = "en" }: PageProps) {
             </HeroDescription>
             <Actions>
               <CtaLink href={link("/partner/")} gold>
-                {copy.partnerCta} {arrow}
+                {copy.partnerCta}
               </CtaLink>
               <QuietLink href={link("/work/")}>{copy.workCta}</QuietLink>
             </Actions>
@@ -230,6 +234,8 @@ export function HomePage({ locale = "en" }: PageProps) {
           <FieldVideo
             name="hero-belayan"
             posterAlt={copy.heroAlt}
+            pauseLabel={copy.pauseVideo}
+            resumeLabel={copy.resumeVideo}
             hero
             videos={copy.videos}
           />
@@ -245,9 +251,7 @@ export function HomePage({ locale = "en" }: PageProps) {
             {copy.beliefHeading[1]}
           </Heading2>
           <BodyText component="p">{copy.beliefDescription}</BodyText>
-          <TextLink href={link("/about/")}>
-            {copy.beliefLink} {arrow}
-          </TextLink>
+          <TextLink href={link("/about/")}>{copy.beliefLink}</TextLink>
         </Box>
       </Introduction>
 
@@ -279,7 +283,6 @@ export function HomePage({ locale = "en" }: PageProps) {
                   {card.title[1]}
                 </Heading3>
                 <p>{card.description}</p>
-                <span className="card-arrow">{arrow}</span>
               </FocusCard>
             ))}
           </FocusGrid>
@@ -297,9 +300,7 @@ export function HomePage({ locale = "en" }: PageProps) {
         </Box>
         <Box>
           <BodyText component="p">{copy.calloutDescription}</BodyText>
-          <CtaLink href={link("/partner/")}>
-            {copy.calloutCta} {arrow}
-          </CtaLink>
+          <CtaLink href={link("/partner/")}>{copy.calloutCta}</CtaLink>
         </Box>
       </PartnershipCallout>
     </MuiTheme>
@@ -461,9 +462,7 @@ export function AboutPage({ locale = "en" }: PageProps) {
             </details>
           ))}
           <PrinciplesNote component="p">{copy.principlesNote}</PrinciplesNote>
-          <TextLink href={link("/partner/")}>
-            {copy.partnershipLink} {arrow}
-          </TextLink>
+          <TextLink href={link("/partner/")}>{copy.partnershipLink}</TextLink>
         </Principles>
       </Introduction>
     </MuiTheme>
@@ -625,7 +624,7 @@ export function WorkPage({ locale = "en" }: PageProps) {
             <a href={`#${localizedPillars[index].id}`} key={label}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <span>{label}</span>
-              {arrow}
+              {expand}
             </a>
           ))}
         </JumpLinks>
@@ -673,7 +672,7 @@ export function WorkPage({ locale = "en" }: PageProps) {
         <CompactCta>
           <Heading2 component="h2">{copy.ctaHeading}</Heading2>
           <CtaLink href={link("/partner/")} gold>
-            {copy.ctaLabel} {arrow}
+            {copy.ctaLabel}
           </CtaLink>
         </CompactCta>
       </VisionBand>
@@ -775,9 +774,7 @@ export function PartnerPage({ locale = "en" }: PageProps) {
           {copy.heading[1]}
         </Heading1>
         <Lead component="p">{copy.lead}</Lead>
-        <CtaLink href="#conversation">
-          {copy.startCta} {arrow}
-        </CtaLink>
+        <CtaLink href="#conversation">{copy.startCta}</CtaLink>
       </PageHeading>
 
       <FocusSection>
@@ -847,9 +844,7 @@ export function PartnerPage({ locale = "en" }: PageProps) {
                 {copy.whatsappLabel} {arrow}
               </TextLink>
             </BodyText>
-            <CtaLink href="tel:+6282157245665">
-              {copy.callLabel} {arrow}
-            </CtaLink>
+            <CtaLink href="tel:+6282157245665">{copy.callLabel}</CtaLink>
             <SmallText component="p">{copy.contactNote}</SmallText>
           </ContactCard>
         </ContactGrid>

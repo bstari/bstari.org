@@ -108,6 +108,7 @@ export const TextLink = styled("a")({
   fontSize: "0.9rem",
   fontWeight: 500,
   gap: 12,
+  minHeight: 44,
   paddingBlock: 8,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.navy },
@@ -129,15 +130,12 @@ export const CtaLink = styled("a", {
   display: "inline-flex",
   fontSize: "0.87rem",
   fontWeight: 500,
-  gap: 32,
-  justifyContent: "space-between",
   minHeight: 54,
   padding: "18px 25px",
   transition: "background 0.2s",
   "&:hover": {
     backgroundColor: gold ? "#e9dcbe" : "#153e62",
   },
-  "& > svg": { flex: "0 0 auto", fontSize: "1.25rem" },
   "@media (prefers-reduced-motion: reduce)": { transition: "none" },
 }));
 
@@ -202,8 +200,11 @@ export const Actions = styled(Box)<SemanticProps>({
 });
 
 export const QuietLink = styled("a")({
+  alignItems: "center",
   borderBottom: "1px solid #ffffff50",
+  display: "inline-flex",
   fontSize: "0.85rem",
+  minHeight: 44,
   paddingBlock: 8,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.gold },
@@ -283,29 +284,17 @@ export const FocusIcon = styled("span")({
 
 export const FocusCard = styled("a")(({ theme }) => ({
   borderTop: "1px solid #c4cecb",
-  padding: "32px 32px 32px 0",
-  position: "relative",
+  padding: "32px 0",
   "& h3": { fontSize: "1.65rem" },
   "& p": { fontSize: "0.85rem", margin: "14px 0 0" },
-  "& .card-arrow": {
-    color: colors.navy,
-    display: "inline-flex",
-    fontSize: "1.4rem",
-    position: "absolute",
-    right: 0,
-    top: 36,
-    "& svg": { fontSize: "1.35rem" },
-  },
   "&:hover h3": {
     textDecoration: "underline",
     textDecorationThickness: 1,
     textUnderlineOffset: 5,
   },
   [theme.breakpoints.down("sm")]: {
-    paddingRight: 20,
     "& h3": { fontSize: "1.4rem" },
     "& p": { fontSize: "0.8rem" },
-    "& .card-arrow svg": { fontSize: "1.25rem" },
   },
 }));
 
@@ -413,6 +402,7 @@ export const Principles = styled(Box)<SemanticProps>(({ theme }) => ({
     fontSize: "1.05rem",
     fontWeight: 500,
     lineHeight: 1.5,
+    minHeight: 44,
     paddingRight: 15,
   },
   "& summary svg": {
@@ -436,9 +426,8 @@ export const JumpLinks = styled("nav")({
     gap: 16,
     gridTemplateColumns: "32px 1fr auto",
     padding: "15px 0",
-    transition: "color 0.2s",
   },
-  "& a:hover": { color: colors.focus },
+  "& a:hover": { textDecoration: "underline", textUnderlineOffset: 5 },
   "& a span:first-of-type": {
     color: colors.muted,
     fontSize: "0.7rem",
@@ -482,6 +471,7 @@ export const WorkItem = styled("section")(({ theme }) => ({
     display: "flex",
     fontSize: "0.85rem",
     justifyContent: "space-between",
+    minHeight: 44,
   },
   "& summary svg": {
     color: colors.navy,
@@ -561,6 +551,7 @@ export const ContactPhone = styled("a")({
   gap: 12,
   lineHeight: 1.4,
   marginBlock: 22,
+  minHeight: 44,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.navy },
   "& svg": { color: colors.focus, fontSize: "1.35rem" },
