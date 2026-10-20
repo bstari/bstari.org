@@ -542,17 +542,19 @@ export const ContactCard = styled(Box)<SemanticProps>(({ theme }) => ({
   },
 }));
 
-export const ContactPhone = styled("a")({
+export const ContactEmail = styled("a")({
   alignItems: "center",
   borderBottom: "1px solid #a3b5ad",
   display: "inline-flex",
   fontFamily: '"Source Serif 4", Georgia, serif',
-  fontSize: "clamp(1.6rem, 3vw, 2.3rem)",
+  fontSize: "clamp(1.2rem, 2.1vw, 1.8rem)",
   gap: 12,
   lineHeight: 1.4,
   marginBlock: 22,
+  maxWidth: "100%",
   minHeight: 44,
   transition: "border-color 0.2s",
   "&:hover": { borderColor: colors.navy },
+  "& span": { minWidth: 0, overflowWrap: "anywhere" },
   "& svg": { color: colors.focus, fontSize: "1.35rem" },
 });
