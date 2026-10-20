@@ -129,9 +129,10 @@ describe("published site", () => {
     const work = await readPage("/work/");
     expect(work.match(/src="\/photos\//g)?.length).toBe(4);
     expect(work.match(/<figcaption\b/g)?.length).toBe(4);
-    expect(partner).toContain("tel:+6282157245665");
+    expect(partner).toContain("mailto:inquiry@bstari.org");
+    expect(partner).toContain("Email our team");
     expect(partner).toContain("https://wa.me/6282157245665");
-    expect(partner).not.toContain("mailto:info@bstari.org");
+    expect(partner).not.toContain("info@bstari.org");
     expect(indonesianHome).toContain("Melanjutkan");
     expect(indonesianHome).toContain("keberlanjutan.");
     expect(indonesianHome).not.toContain(
@@ -140,8 +141,9 @@ describe("published site", () => {
     expect(indonesianHome).toContain("Bermitra dengan kami");
     expect(indonesianPartner).toContain("Kemajuan yang berlanjut.");
     expect(indonesianPartner).toContain("Mulai percakapan");
-    expect(indonesianPartner).toContain("tel:+6282157245665");
+    expect(indonesianPartner).toContain("mailto:inquiry@bstari.org");
+    expect(indonesianPartner).toContain("Kirim email ke tim kami");
     expect(indonesianPartner).toContain("https://wa.me/6282157245665");
-    expect(indonesianPartner).not.toContain("mailto:info@bstari.org");
+    expect(indonesianPartner).not.toContain("info@bstari.org");
   });
 });

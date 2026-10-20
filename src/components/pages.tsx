@@ -1,10 +1,10 @@
 import AgricultureOutlined from "@mui/icons-material/AgricultureOutlined";
 import ArrowOutwardRounded from "@mui/icons-material/ArrowOutwardRounded";
 import AutoStoriesOutlined from "@mui/icons-material/AutoStoriesOutlined";
+import EmailOutlined from "@mui/icons-material/EmailOutlined";
 import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
 import GroupsOutlined from "@mui/icons-material/GroupsOutlined";
 import NaturePeopleOutlined from "@mui/icons-material/NaturePeopleOutlined";
-import PhoneRounded from "@mui/icons-material/PhoneRounded";
 import SchoolOutlined from "@mui/icons-material/SchoolOutlined";
 import WhatsApp from "@mui/icons-material/WhatsApp";
 import Box from "@mui/material/Box";
@@ -15,8 +15,8 @@ import {
   BodyText,
   CompactCta,
   ContactCard,
+  ContactEmail,
   ContactGrid,
-  ContactPhone,
   ContactSection,
   CtaLink,
   FocusCard,
@@ -716,7 +716,7 @@ const partnerCopy = {
     contactTitle: "Let’s start a conversation.",
     messagePrompt: "Prefer messaging?",
     whatsappLabel: "WhatsApp our team",
-    callLabel: "Call our team",
+    emailLabel: "Email our team",
     contactNote:
       "To help us begin, include your organization, area of interest, and proposed timeframe.",
   },
@@ -755,7 +755,7 @@ const partnerCopy = {
     contactTitle: "Mari memulai percakapan.",
     messagePrompt: "Lebih nyaman berkirim pesan?",
     whatsappLabel: "Hubungi tim kami di WhatsApp",
-    callLabel: "Telepon tim kami",
+    emailLabel: "Kirim email ke tim kami",
     contactNote:
       "Agar kami dapat menindaklanjuti, sertakan nama organisasi, bidang yang diminati, dan perkiraan waktu pelaksanaan.",
   },
@@ -832,10 +832,10 @@ export function PartnerPage({ locale = "en" }: PageProps) {
           </Box>
           <ContactCard>
             <Heading3 component="h3">{copy.contactTitle}</Heading3>
-            <ContactPhone href="tel:+6282157245665">
-              <PhoneRounded aria-hidden="true" />
-              +62 821-5724-5665
-            </ContactPhone>
+            <ContactEmail href="mailto:inquiry@bstari.org">
+              <EmailOutlined aria-hidden="true" />
+              <span>inquiry@bstari.org</span>
+            </ContactEmail>
             <BodyText component="p">
               {copy.messagePrompt}
               <br />
@@ -844,7 +844,9 @@ export function PartnerPage({ locale = "en" }: PageProps) {
                 {copy.whatsappLabel} {arrow}
               </TextLink>
             </BodyText>
-            <CtaLink href="tel:+6282157245665">{copy.callLabel}</CtaLink>
+            <CtaLink href="mailto:inquiry@bstari.org">
+              {copy.emailLabel}
+            </CtaLink>
             <SmallText component="p">{copy.contactNote}</SmallText>
           </ContactCard>
         </ContactGrid>
