@@ -41,7 +41,9 @@ const HeaderInner = styled(PageContainer)(({ theme }) => ({
 }));
 
 const Brand = styled("a")(({ theme }) => ({
-  display: "block",
+  alignItems: "center",
+  display: "flex",
+  minHeight: 44,
   width: 210,
   "& img": { height: "auto", width: "100%" },
   [theme.breakpoints.down("md")]: { width: 180 },
@@ -56,6 +58,10 @@ const DesktopNav = styled("nav")(({ theme }) => ({
   "& a": {
     borderBottom: "1px solid transparent",
     color: "#d9e1e7",
+    minHeight: 44,
+    minWidth: 44,
+    display: "inline-flex",
+    alignItems: "center",
     padding: "12px 0",
   },
   "& a:hover, & a[aria-current]": {
@@ -80,6 +86,7 @@ const DesktopNav = styled("nav")(({ theme }) => ({
     border: 0,
     color: "#d9e1e7",
     fontSize: "0.76rem",
+    minWidth: 44,
     padding: "8px 0",
   },
   [theme.breakpoints.down("md")]: { gap: 22 },
@@ -99,6 +106,7 @@ const MobileLinks = styled("nav")({
   "& a": {
     borderTop: "1px solid #ffffff20",
     fontSize: "0.95rem",
+    minHeight: 44,
     padding: "16px 8px",
   },
   "& a[aria-current]": { color: colors.gold },
@@ -261,8 +269,9 @@ const FooterTop = styled(PageContainer)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     fontSize: "0.8rem",
-    gap: 15,
+    gap: 4,
   },
+  "& nav a": { alignItems: "center", display: "inline-flex", minHeight: 44 },
   "& a:hover": { textDecoration: "underline", textUnderlineOffset: 5 },
   [theme.breakpoints.down("md")]: { gap: 30 },
   [theme.breakpoints.down("sm")]: {
@@ -274,9 +283,12 @@ const FooterTop = styled(PageContainer)(({ theme }) => ({
 }));
 
 const FooterName = styled("a")({
+  alignItems: "center",
+  display: "inline-flex",
   fontFamily: '"Source Serif 4", Georgia, serif',
   fontSize: "1.8rem",
   letterSpacing: "0.05em",
+  minHeight: 44,
 });
 
 const FooterBottom = styled(PageContainer)(({ theme }) => ({
